@@ -6,7 +6,11 @@ var VIDEO_METODOLOGIA = '';
 
 (function () {
   var ID = (VIDEO_METODOLOGIA || '').trim();
+  /* Botoes que existem so para o video: sem video eles saem da pagina. */
   var botoes = document.querySelectorAll('[data-video-metodologia]');
+  /* Elementos que ja tinham outro destino, como o botao do alto da pagina:
+     sem video continuam intactos, levando para a secao da metodologia. */
+  var extras = document.querySelectorAll('[data-video-extra]');
   var i;
 
   if (!/^[A-Za-z0-9_-]{11}$/.test(ID)) {
@@ -96,14 +100,20 @@ var VIDEO_METODOLOGIA = '';
     if (e.key === 'Escape') fechar();
   });
 
+  function aoClicar(e) {
+    e.preventDefault();
+    abrir(e.currentTarget);
+    if (window.fbq) {
+      window.fbq('track', 'ViewContent', { content_name: 'video-metodologia' });
+    }
+  }
+
   for (i = 0; i < botoes.length; i++) {
     botoes[i].style.display = '';
-    botoes[i].addEventListener('click', function (e) {
-      e.preventDefault();
-      abrir(e.currentTarget);
-      if (window.fbq) {
-        window.fbq('track', 'ViewContent', { content_name: 'video-metodologia' });
-      }
-    });
+    botoes[i].addEventListener('click', aoClicar);
+  }
+
+  for (i = 0; i < extras.length; i++) {
+    extras[i].addEventListener('click', aoClicar);
   }
 })();
