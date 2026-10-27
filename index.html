@@ -359,6 +359,7 @@
     <div class="metodologia-head">
       <div class="metodologia-media reveal" data-reveal="scale-up">
         <div class="frame-corners">
+          <button type="button" class="tocar-video" data-video-metodologia style="display:none" aria-label="Assistir o vídeo da Metodologia WeCare"><span></span></button>
           <img src="images/metodologia-analise.jpg" alt="Leudair Vinter de Farias analisando estratégias de crescimento" loading="lazy">
         </div>
       </div>
@@ -373,7 +374,10 @@
         <p class="metodologia-cta-text">
           Quer entender melhor como funciona? Agende uma ligação ou videochamada com nossa equipe.
         </p>
-        <a href="https://wa.me/5547992626235?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener" class="btn btn-red">Agendar conversa</a>
+        <div class="metodologia-acoes">
+          <a href="https://wa.me/5547992626235?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener" class="btn btn-red">Agendar conversa</a>
+          <button type="button" class="btn btn-ghost" data-video-metodologia style="display:none">Assistir o vídeo</button>
+        </div>
       </div>
     </div>
 
@@ -680,5 +684,6 @@
 })();
 </script>
 <script>document.addEventListener('click',function(e){var a=e.target.closest('a[href*="wa.me"]');if(a&&window.fbq){fbq('track','Contact',{content_name:'SITE-PRINCIPAL',content_category:'site-principal'});}},true);</script>
+<script src="js/video.js"></script>
 </body>
 </html>
