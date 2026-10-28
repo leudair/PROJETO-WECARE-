@@ -2,7 +2,7 @@
    Para trocar o video, mude so a linha abaixo para o codigo do YouTube,
    a parte depois de "v=" no endereco. Enquanto estiver vazia, os botoes
    do video ficam escondidos e a pagina segue normal. */
-var VIDEO_METODOLOGIA = '';
+var VIDEO_METODOLOGIA = '8Kf9VPr3VYw';
 
 (function () {
   var ID = (VIDEO_METODOLOGIA || '').trim();
