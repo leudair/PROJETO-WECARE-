@@ -45,6 +45,17 @@
     '.anel-face-dentro{transform:rotateY(180deg);filter:brightness(.34) saturate(.7)}' +
     '.anel-dica{margin-top:14px;text-align:center;font-size:.82rem;letter-spacing:.06em;' +
     'color:var(--muted,#A8A6AA)}' +
+    '.anel-seta{position:absolute;top:50%;z-index:6;transform:translateY(-50%);' +
+    'width:42px;height:42px;display:flex;align-items:center;justify-content:center;padding:0;' +
+    'border-radius:50%;cursor:pointer;background:rgba(10,10,11,.72);' +
+    'border:1px solid rgba(255,255,255,.28);color:#fff;' +
+    'transition:background .25s,border-color .25s;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}' +
+    '.anel-seta:hover{background:var(--red,#C41230);border-color:var(--red,#C41230)}' +
+    '.anel-seta svg{width:18px;height:18px;display:block}' +
+    '.anel-seta-esq{left:8px}.anel-seta-dir{right:8px}' +
+    '@media (max-width:620px){.anel-seta{width:36px;height:36px}' +
+    '.anel-seta svg{width:16px;height:16px}' +
+    '.anel-seta-esq{left:2px}.anel-seta-dir{right:2px}}' +
     '@media (max-width:620px){.anel-palco::before,.anel-palco::after{width:7%}' +
     '.anel-face{border-radius:12px}}';
   document.head.appendChild(estilo);
@@ -59,6 +70,20 @@
   tombo.appendChild(anel);
   cena.appendChild(tombo);
   palco.appendChild(cena);
+
+  function seta(lado, titulo, caminho) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'anel-seta anel-seta-' + lado;
+    b.setAttribute('aria-label', titulo);
+    b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+      '<path d="' + caminho + '" fill="none" stroke="currentColor" stroke-width="2.2" ' +
+      'stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+    palco.appendChild(b);
+    return b;
+  }
+  var setaEsq = seta('esq', 'Arte anterior', 'M15 5 8 12l7 7');
+  var setaDir = seta('dir', 'Próxima arte', 'M9 5l7 7-7 7');
 
   var total = ARTES.length;
   var passo = 360 / total;
@@ -112,9 +137,9 @@
     if (celular && !eraCelular) {
       alvo = Math.round(giro / passo) * passo;
       esperaAte = agora() + PAUSA;
-      if (dica) dica.textContent = 'Arraste para ver, toque para ampliar';
+      if (dica) dica.textContent = 'Arraste ou use as setas, toque para ampliar';
     } else if (!celular && eraCelular) {
-      if (dica) dica.textContent = 'Arraste para girar';
+      if (dica) dica.textContent = 'Arraste ou use as setas';
     }
 
     palco.style.height = (altura + (celular ? 50 : 60)) + 'px';
@@ -131,7 +156,7 @@
   var giro = 0, velocidade = 0, ultimo = 0, quadro = 0;
   var arrasto = { ativo: false, x: 0, andou: 0 };
   var parado = false;
-  var alvo = 0, esperaAte = 0;
+  var alvo = 0, esperaAte = 0, indoPara = false;
   var calmo = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var dica = palco.parentNode && palco.parentNode.querySelector('.anel-dica');
   var caixaLuz = document.getElementById('print-lightbox');
@@ -170,6 +195,14 @@
         } else {
           giro = alvo;
           if (!calmo && tempo >= esperaAte) alvo += passo;
+        }
+      } else if (indoPara) {
+        var resta = alvo - giro;
+        if (Math.abs(resta) > 0.05) {
+          giro += resta * (1 - Math.exp(-7 * dt));
+        } else {
+          giro = alvo;
+          indoPara = false;
         }
       } else if (Math.abs(velocidade) > 0.02) {
         giro += velocidade * dt;
@@ -232,6 +265,26 @@
   palco.addEventListener('pointerup', soltar);
   palco.addEventListener('pointercancel', soltar);
   palco.addEventListener('pointerleave', soltar);
+
+  function virar(lado) {
+    var base = (celular || indoPara) ? alvo : Math.round(giro / passo) * passo;
+    alvo = base + lado * passo;
+    indoPara = true;
+    velocidade = 0;
+    esperaAte = agora() + PAUSA;
+    ligar();
+  }
+
+  function ligarSeta(botao, lado) {
+    botao.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+    botao.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      virar(lado);
+    });
+  }
+  ligarSeta(setaEsq, 1);
+  ligarSeta(setaDir, -1);
 
   window.addEventListener('resize', medir);
   document.addEventListener('visibilitychange', function () {
