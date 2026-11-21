@@ -3,354 +3,424 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Agência WeCare | Dez anos de presença digital que cresce</title>
-<meta name="description" content="A Agência WeCare cuida da presença digital de marcas e profissionais há dez anos, com método próprio de crescimento, alcance e autoridade nas redes sociais.">
+<title>Agência WeCare | Seu perfil visto por quem ainda não te conhece</title>
+<meta name="description" content="Há dez anos a Agência WeCare faz perfis crescerem com método próprio de alcance, engajamento e autoridade. Fale com a equipe no WhatsApp.">
 <meta name="robots" content="noindex, follow">
-
 <meta property="og:type" content="website">
-<meta property="og:title" content="Agência WeCare | Dez anos de presença digital que cresce">
+<meta property="og:title" content="Agência WeCare | Seu perfil visto por quem ainda não te conhece">
 <meta property="og:description" content="Método próprio de crescimento, alcance e autoridade nas redes sociais. Fale com a equipe no WhatsApp.">
 <meta property="og:image" content="/images/banner-FINAL-1200x630.jpg">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
-
+<meta name="theme-color" content="#EEF0F3">
 <link rel="icon" type="image/png" href="/images/logo-wecare.png?v=3">
 <link rel="apple-touch-icon" href="/images/logo-wecare.png?v=3">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
+/* Versao B: estudio claro com objetos em 3D. Fundo frio, tinta grafite, vermelho WeCare. */
 :root{
-  --papel:#F4F1EB; --papel-2:#EBE6DC; --linha:#D8D1C4;
-  --tinta:#17161A; --tinta-2:#4A4751; --tinta-3:#75717C;
-  --vinho:#A8122C; --vinho-claro:#C8203C;
-  --largura:1180px;
-  --titulo:'Archivo',system-ui,sans-serif;
-  --texto:'Inter',system-ui,sans-serif;
+  --fundo:#EEF0F3; --fundo-2:#E3E6EB; --branco:#FFFFFF; --linha:#D6DAE1;
+  --tinta:#121318; --tinta-2:#3B3F4A; --tinta-3:#6A6F7C;
+  --vermelho:#D4112E; --vermelho-2:#A20D24; --vermelho-luz:#FF3B55;
+  --grafite:#15161C; --grafite-2:#1F2129;
+  --verde:#1FAA52;
+  --titulo:'Sora',system-ui,sans-serif;
+  --texto:'DM Sans',system-ui,sans-serif;
+  --largura:1160px;
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;background:var(--papel);color:var(--tinta-2);
-  font-family:var(--texto);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
-}
-img,video{max-width:100%;display:block}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fundo);color:var(--tinta-2);font-family:var(--texto);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
 a{color:inherit}
-h1,h2,h3{font-family:var(--titulo);color:var(--tinta);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.02em}
+h1,h2,h3{font-family:var(--titulo);color:var(--tinta);margin:0;line-height:1.08;letter-spacing:-.03em;text-wrap:balance}
 p{margin:0}
-.area{width:100%;max-width:var(--largura);margin:0 auto;padding-inline:20px}
-.bloco{padding-block:clamp(56px,8vw,104px)}
-.bloco-areia{background:var(--papel-2)}
-.rotulo{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--vinho);font-weight:600;margin-bottom:14px}
-.titulo{font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:600}
-.linha-fina{height:1px;background:var(--linha);border:0;margin:0}
+.area{width:100%;max-width:var(--largura);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.bloco{padding-block:clamp(64px,9vw,120px)}
+.rotulo{display:inline-flex;align-items:center;gap:10px;font-family:var(--titulo);font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--vermelho);margin-bottom:16px}
+.rotulo::before{content:"";width:22px;height:2px;border-radius:2px;background:currentColor}
+.titulo{font-size:clamp(1.85rem,4.4vw,3rem);font-weight:700}
+.apoio{margin-top:18px;font-size:1.04rem;max-width:36em}
+.apoio + .apoio{margin-top:14px}
+
+/* botoes com volume: a chapa tem uma lateral embaixo que afunda ao tocar */
+.btn{--lado:#7E0A1C;position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--titulo);font-weight:600;font-size:1rem;letter-spacing:-.01em;text-decoration:none;
+  padding:16px 26px;border-radius:14px;background:linear-gradient(180deg,var(--vermelho-luz) -40%,var(--vermelho) 55%);color:#fff;
+  box-shadow:0 6px 0 var(--lado),0 14px 26px -8px rgba(212,17,46,.55);transform:translateY(0);transition:transform .12s,box-shadow .12s}
+.btn:active{transform:translateY(5px);box-shadow:0 1px 0 var(--lado),0 6px 14px -6px rgba(212,17,46,.5)}
+.btn-claro{--lado:#BFC4CE;background:linear-gradient(180deg,#fff,#F4F5F8);color:var(--tinta);box-shadow:0 6px 0 var(--lado),0 14px 24px -10px rgba(18,19,24,.25)}
+.btn-pequeno{padding:10px 16px;font-size:.88rem;border-radius:11px;box-shadow:0 4px 0 var(--lado),0 10px 18px -8px rgba(212,17,46,.5)}
+.btn-pequeno:active{transform:translateY(3px);box-shadow:0 1px 0 var(--lado)}
+.btn:focus-visible,.selo:focus-visible,.deck-nav button:focus-visible,.leque button:focus-visible{outline:3px solid var(--tinta);outline-offset:4px}
+.zap{width:19px;height:19px;flex:0 0 auto;fill:currentColor}
 
 /* topo */
-.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(244,241,235,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--linha)}
-.topo-area{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
-.topo img{height:34px;width:auto}
-.btn{
-  display:inline-flex;align-items:center;gap:9px;font-family:var(--titulo);font-weight:600;font-size:.95rem;
-  padding:14px 24px;border-radius:4px;text-decoration:none;transition:background .2s,color .2s,border-color .2s;
-}
-.btn-cheio{background:var(--vinho);color:#fff}
-.btn-cheio:hover{background:var(--vinho-claro)}
-.btn-vazio{background:transparent;color:var(--tinta);border:1px solid var(--tinta)}
-.btn-vazio:hover{background:var(--tinta);color:var(--papel)}
-.btn-curto{padding:10px 18px;font-size:.88rem}
-.zap{width:17px;height:17px;flex:0 0 auto;fill:currentColor}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--fundo)}
+.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(238,240,243,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(214,218,225,.7)}
+.topo .area{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.topo img{height:36px;width:auto}
 
-/* abertura */
-.abertura{display:grid;grid-template-columns:1fr;gap:34px;align-items:center;padding-block:clamp(40px,6vw,86px)}
-.abertura h1{font-size:clamp(2.1rem,5.4vw,3.9rem);font-weight:700}
-.abertura h1 em{font-style:normal;color:var(--vinho)}
-.abertura-texto{margin-top:22px;font-size:1.08rem;max-width:34em}
-.abertura-acoes{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-.abertura-foto{position:relative;border-radius:6px;overflow:hidden;background:var(--papel-2)}
-.abertura-foto img{width:100%;height:100%;object-fit:cover;object-position:72% center;aspect-ratio:4/5}
-@media (max-width:859px){.abertura-foto img{aspect-ratio:16/11;object-position:72% center}}
-.assinatura{display:flex;align-items:center;gap:12px;margin-top:26px;font-size:.88rem;color:var(--tinta-3)}
-.assinatura span{display:block;width:34px;height:1px;background:var(--vinho)}
-
-/* selo do atendimento */
-.selo{
-  display:inline-flex;align-items:center;gap:11px;margin-top:26px;padding:12px 20px;border-radius:999px;
-  background:#fff;border:1px solid var(--linha);text-decoration:none;color:var(--tinta-2);font-size:.95rem;
-  box-shadow:0 2px 10px rgba(23,22,26,.06);transition:border-color .2s}
-.selo:hover{border-color:var(--vinho)}
+/* abertura com o palco 3D */
+.abertura{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;align-items:center;padding-block:clamp(28px,5vw,72px) clamp(40px,6vw,80px)}
+.abertura h1{font-size:clamp(2.15rem,6.2vw,4.1rem);font-weight:800}
+.abertura h1 em{font-style:normal;color:var(--vermelho)}
+.abertura .apoio{font-size:1.08rem}
+.acoes{display:flex;flex-wrap:wrap;gap:16px 14px;margin-top:28px}
+.selo{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:11px 18px;border-radius:999px;background:var(--branco);
+  border:1px solid var(--linha);text-decoration:none;color:var(--tinta-2);font-size:.95rem;box-shadow:0 10px 24px -14px rgba(18,19,24,.35)}
 .selo strong{color:var(--tinta);font-weight:600}
-.selo-ponto{width:9px;height:9px;border-radius:50%;background:#1faa52;box-shadow:0 0 0 4px rgba(31,170,82,.18)}
+.selo-ponto{width:9px;height:9px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 4px rgba(31,170,82,.18)}
 
-/* numeros */
-.numeros{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:6px;overflow:hidden}
-.numero{background:var(--papel);padding:26px 20px}
-.numero strong{display:block;font-family:var(--titulo);font-size:clamp(1.9rem,4.4vw,2.7rem);color:var(--tinta);font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
-.numero span{display:block;margin-top:8px;font-size:.84rem;color:var(--tinta-3);letter-spacing:.04em}
-.numeros-extra{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.numeros-extra li{list-style:none;background:#fff;border:1px solid var(--linha);border-radius:999px;padding:8px 16px;font-size:.86rem}
-.numeros-extra b{font-variant-numeric:tabular-nums;color:var(--tinta);font-weight:600}
-.nota{margin-top:18px;font-size:.88rem;color:var(--tinta-3)}
+.palco{position:relative;height:clamp(430px,118vw,600px);perspective:1100px;perspective-origin:50% 40%;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.palco-chao{position:absolute;left:50%;bottom:4%;width:78%;height:46px;transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(18,19,24,.32),rgba(18,19,24,0));filter:blur(4px)}
+.cena{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(var(--rx,4deg)) rotateY(var(--ry,-16deg));will-change:transform}
+.retrato{position:absolute;left:50%;top:6%;width:min(64%,330px);aspect-ratio:4/5;transform:translateX(-50%) translateZ(0);transform-style:preserve-3d;border-radius:26px}
+.retrato img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;border-radius:26px;
+  box-shadow:0 40px 60px -28px rgba(18,19,24,.55)}
+/* espessura da moldura: camadas atras da foto */
+.retrato::before,.retrato::after{content:"";position:absolute;inset:0;border-radius:26px;background:var(--grafite);transform:translateZ(-10px)}
+.retrato::after{transform:translateZ(-20px);background:var(--vermelho-2)}
+.retrato-borda{position:absolute;inset:0;border-radius:26px;border:1px solid rgba(255,255,255,.25);pointer-events:none;transform:translateZ(1px)}
+.ficha{position:absolute;display:flex;flex-direction:column;gap:2px;padding:12px 15px;border-radius:16px;background:rgba(255,255,255,.92);
+  border:1px solid rgba(255,255,255,.9);box-shadow:0 22px 34px -18px rgba(18,19,24,.5),inset 0 -3px 0 rgba(18,19,24,.06);
+  font-size:.74rem;color:var(--tinta-3);white-space:nowrap;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.ficha b{font-family:var(--titulo);font-size:1.25rem;color:var(--tinta);letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums}
+.ficha-vermelha{background:var(--vermelho);border-color:var(--vermelho);color:rgba(255,255,255,.85)}
+.ficha-vermelha b{color:#fff}
+.f1{left:7%;top:9%;transform:translateZ(90px)}
+.f2{right:5%;top:31%;transform:translateZ(60px)}
+.f3{left:6%;top:57%;transform:translateZ(110px)}
+.f4{right:8%;top:76%;transform:translateZ(80px)}
+.flutua-1{animation:boia 6s ease-in-out infinite}
+.flutua-2{animation:boia 7s ease-in-out -2s infinite}
+@keyframes boia{50%{margin-top:-8px}}
+.palco-dica{position:absolute;left:0;right:0;bottom:0;text-align:center;font-size:.78rem;color:var(--tinta-3)}
 
-/* duas colunas */
-.duas{display:grid;grid-template-columns:1fr;gap:34px;align-items:start}
-.duas-foto{border-radius:6px;overflow:hidden}
-.duas-foto img{width:100%;aspect-ratio:3/4;object-fit:cover}
-.corpo p + p{margin-top:16px}
+/* numeros em blocos com volume */
+.faixa-numeros{background:var(--branco);border-block:1px solid var(--linha)}
+.blocos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:34px}
+.bloco3d{position:relative;padding:22px 18px 20px;border-radius:18px;background:linear-gradient(160deg,#fff,#F3F4F7);border:1px solid var(--linha);
+  box-shadow:0 8px 0 #D3D7DF,0 9px 0 #C3C8D1,0 22px 30px -16px rgba(18,19,24,.35);transform:perspective(700px) rotateX(10deg);transform-origin:50% 100%}
+.bloco3d strong{display:block;font-family:var(--titulo);font-size:clamp(1.7rem,6.4vw,2.6rem);font-weight:800;color:var(--tinta);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.bloco3d span{display:block;margin-top:8px;font-size:.86rem;color:var(--tinta-3)}
+.bloco3d.destaque{background:linear-gradient(160deg,var(--vermelho-luz) -30%,var(--vermelho) 60%);border-color:var(--vermelho);box-shadow:0 8px 0 var(--vermelho-2),0 9px 0 #7E0A1C,0 22px 30px -14px rgba(212,17,46,.55)}
+.bloco3d.destaque strong,.bloco3d.destaque span{color:#fff}
+.extras{display:flex;flex-wrap:wrap;gap:10px;margin:34px 0 0;padding:0;list-style:none}
+.extras li{background:var(--fundo);border:1px solid var(--linha);border-radius:999px;padding:8px 15px;font-size:.88rem}
+.extras b{color:var(--tinta);font-weight:600;font-variant-numeric:tabular-nums}
+.nota{margin-top:20px;font-size:.88rem;color:var(--tinta-3)}
 
-/* lista do que fazemos */
-.fazemos{display:grid;grid-template-columns:1fr;gap:0;margin-top:30px;border-top:1px solid var(--linha)}
-.fazemos li{list-style:none;border-bottom:1px solid var(--linha);padding:16px 2px;display:flex;align-items:baseline;gap:14px}
-.fazemos b{font-family:var(--titulo);font-size:.82rem;color:var(--vinho);font-variant-numeric:tabular-nums;flex:0 0 auto}
-.fazemos span{color:var(--tinta);font-size:1.02rem}
-.plataformas{margin-top:22px;font-size:.92rem;color:var(--tinta-3)}
+/* a agencia: tambor 3D que gira com os servicos */
+.duas{display:grid;grid-template-columns:minmax(0,1fr);gap:40px;align-items:center}
+.tambor-caixa{position:relative;height:300px;perspective:900px;border-radius:24px;background:radial-gradient(120% 90% at 50% 0%,#2A2C36,var(--grafite));overflow:hidden;touch-action:pan-x;
+  box-shadow:0 30px 50px -30px rgba(18,19,24,.6)}
+.tambor-caixa::before,.tambor-caixa::after{content:"";position:absolute;left:0;right:0;height:90px;z-index:2;pointer-events:none}
+.tambor-caixa::before{top:0;background:linear-gradient(var(--grafite),rgba(21,22,28,0))}
+.tambor-caixa::after{bottom:0;background:linear-gradient(rgba(21,22,28,0),var(--grafite))}
+.tambor-mira{position:absolute;left:18px;right:18px;top:50%;height:64px;margin-top:-32px;border-radius:14px;border:1px solid rgba(255,59,85,.55);box-shadow:0 0 0 1px rgba(255,59,85,.15),0 0 30px rgba(212,17,46,.35);z-index:1;pointer-events:none}
+.tambor{position:absolute;left:18px;right:18px;top:50%;height:64px;margin-top:-32px;transform-style:preserve-3d;transform:translateZ(-77px) rotateX(var(--giro,0deg));will-change:transform}
+.face{position:absolute;inset:0;display:flex;align-items:center;gap:14px;padding:0 20px;border-radius:14px;background:linear-gradient(180deg,#2B2E39,#1C1E26);
+  border:1px solid rgba(255,255,255,.07);color:#fff;font-family:var(--titulo);font-weight:600;font-size:1.02rem;letter-spacing:-.01em;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face b{font-size:.78rem;color:var(--vermelho-luz);font-variant-numeric:tabular-nums}
+.tambor-lista{display:none}
+.plataformas{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;padding:0;list-style:none}
+.plataformas li{font-size:.84rem;font-weight:500;color:var(--tinta);background:var(--branco);border:1px solid var(--linha);border-radius:10px;padding:6px 12px;box-shadow:0 3px 0 var(--linha)}
 
-/* passos */
-.passos{display:grid;grid-template-columns:1fr;gap:20px;margin-top:34px}
-.passo{background:var(--papel);border:1px solid var(--linha);border-radius:6px;padding:24px}
-.bloco-areia .passo{background:#fff}
-.passo b{display:block;font-family:var(--titulo);font-size:.8rem;color:var(--vinho);letter-spacing:.1em;margin-bottom:10px}
-.passo h3{font-size:1.12rem;font-weight:600;margin-bottom:8px}
-.passo p{font-size:.95rem}
+/* fotos da estrutura inclinadas */
+.vitrine{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-top:40px;perspective:1200px}
+.quadro{margin:0;border-radius:22px;overflow:hidden;background:var(--grafite);transform:rotateY(var(--incl,0deg)) rotateX(3deg);transform-style:preserve-3d;
+  box-shadow:0 34px 50px -30px rgba(18,19,24,.6),0 0 0 1px rgba(18,19,24,.06)}
+.quadro img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.quadro figcaption{padding:12px 16px;font-size:.86rem;color:#C9CBD3;background:var(--grafite)}
+.vitrine .quadro:nth-child(1){--incl:8deg}
+.vitrine .quadro:nth-child(2){--incl:-8deg}
 
-/* prova */
-.prova-destaque{font-family:var(--titulo);font-size:clamp(1.3rem,2.8vw,1.9rem);color:var(--tinta);font-weight:600;max-width:20em}
-.prova-grade{display:grid;grid-template-columns:1fr;gap:16px;margin-top:30px}
-.prova-grade img{width:100%;border:1px solid var(--linha);border-radius:6px;background:#fff}
+/* metodo: baralho 3D */
+.metodo{background:var(--grafite);color:#C9CBD3}
+.metodo .titulo{color:#fff}
+.metodo .apoio{color:#B6B9C3}
+.deck{position:relative;margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.carta{border-radius:22px;padding:26px 24px 28px;background:linear-gradient(165deg,#fff,#EEF0F3);color:var(--tinta-2);box-shadow:0 30px 40px -24px rgba(0,0,0,.7)}
+.carta .num{display:flex;align-items:center;justify-content:space-between;font-family:var(--titulo);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--vermelho)}
+.carta .num i{font-style:normal;font-size:2.9rem;letter-spacing:-.04em;color:var(--fundo-2);-webkit-text-stroke:1px #C9CDD5;line-height:1}
+.carta h3{font-size:1.5rem;font-weight:700;margin-top:18px}
+.carta p{margin-top:10px;font-size:1rem}
+.deck.ativo{display:block;height:300px;perspective:1000px;transform-style:preserve-3d;touch-action:pan-y}
+.deck.ativo .carta{position:absolute;left:0;right:0;top:0;min-height:236px;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .6s,filter .6s;cursor:grab}
+.deck-nav{display:none}
+.deck.ativo + .deck-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:10px}
+.deck-nav button{font:inherit;font-family:var(--titulo);font-weight:600;font-size:.92rem;color:#fff;background:var(--grafite-2);border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;padding:11px 18px;box-shadow:0 4px 0 #0B0C10;cursor:pointer}
+.deck-nav button:active{transform:translateY(3px);box-shadow:0 1px 0 #0B0C10}
+.pontos{display:flex;gap:8px}
+.pontos span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22);transition:width .3s,background .3s}
+.pontos span.on{width:24px;border-radius:8px;background:var(--vermelho-luz)}
+.metodo .nota{color:#8E92A0;margin-top:26px}
+
+/* resultados: rosca 3D e celulares em leque */
+.rosca-linha{display:grid;grid-template-columns:minmax(0,1fr);gap:30px;align-items:center;margin-top:34px}
+.rosca-palco{position:relative;height:250px;perspective:800px;display:grid;place-items:center}
+.rosca-num{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--titulo);font-size:3rem;font-weight:800;color:var(--tinta);letter-spacing:-.05em;pointer-events:none;padding-bottom:6px}
+.rosca{position:relative;width:220px;height:220px;transform-style:preserve-3d;transform:rotateX(56deg) rotateZ(var(--rz,-20deg))}
+.rosca-camada{position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--vermelho) 0 69%,#C5CAD3 69% 100%);
+  -webkit-mask:radial-gradient(circle,transparent 46%,#000 47%);mask:radial-gradient(circle,transparent 46%,#000 47%)}
+.rosca-lado{filter:brightness(.62)}
+.rosca-valor{position:absolute;inset:0;display:grid;place-items:center;transform:translateZ(26px) rotateZ(calc(var(--rz,-20deg) * -1)) rotateX(-56deg)}
+.rosca-valor b{font-family:var(--titulo);font-size:3.1rem;font-weight:800;color:var(--tinta);letter-spacing:-.05em;text-shadow:0 10px 18px rgba(18,19,24,.18)}
+.frase-grande{font-family:var(--titulo);font-size:clamp(1.4rem,3.6vw,2.1rem);font-weight:700;color:var(--tinta);line-height:1.18;letter-spacing:-.02em}
+.frase-grande em{font-style:normal;color:var(--vermelho)}
+
+.leque{position:relative;height:clamp(380px,106vw,560px);margin-top:46px;perspective:1100px}
+.leque button{position:absolute;left:50%;top:0;width:min(58%,300px);padding:0;border:0;background:none;cursor:pointer;border-radius:26px;
+  transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .7s;transform-style:preserve-3d}
+.leque img{width:100%;aspect-ratio:562/1000;object-fit:cover;border-radius:26px;box-shadow:0 40px 50px -30px rgba(18,19,24,.7)}
+.leque-dica{text-align:center;font-size:.8rem;color:var(--tinta-3);margin-top:8px}
+
+/* quem conduz */
+.ceo-foto{position:relative;perspective:1000px}
+.ceo-foto .quadro{--incl:-10deg}
+.ceo-foto .quadro img{aspect-ratio:870/1001;object-position:50% 30%}
+.cargo{margin-top:8px;font-family:var(--titulo);font-weight:600;color:var(--vermelho)}
+.assina{display:flex;align-items:center;gap:12px;margin-top:24px;font-size:.88rem;color:var(--tinta-3)}
+.assina::before{content:"";width:34px;height:2px;border-radius:2px;background:var(--vermelho)}
+
+
+/* cubo de fotos */
+.cubo-palco{height:340px;perspective:1000px;display:grid;place-items:center;margin-top:30px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.cubo{--l:240px;position:relative;width:var(--l);height:var(--l);transform-style:preserve-3d;transform:rotateX(-12deg) rotateY(var(--cy,0deg));will-change:transform}
+.cubo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+.cubo img:nth-child(1){transform:translateZ(calc(var(--l)/2))}
+.cubo img:nth-child(2){transform:rotateY(90deg) translateZ(calc(var(--l)/2))}
+.cubo img:nth-child(3){transform:rotateY(180deg) translateZ(calc(var(--l)/2))}
+.cubo img:nth-child(4){transform:rotateY(-90deg) translateZ(calc(var(--l)/2))}
+.cubo-tampa{position:absolute;inset:0;background:linear-gradient(135deg,var(--vermelho),var(--vermelho-2));transform:rotateX(90deg) translateZ(calc(var(--l)/2))}
+.cubo-sombra{position:absolute;left:50%;top:50%;width:300px;height:60px;margin:150px 0 0 -150px;border-radius:50%;background:radial-gradient(closest-side,rgba(18,19,24,.35),rgba(18,19,24,0));filter:blur(6px)}
+.cubo-dica{text-align:center;font-size:.8rem;color:var(--tinta-3)}
+@media (min-width:880px){.cubo{--l:300px}.cubo-palco{height:420px}.cubo-sombra{margin-top:190px}}
 
 /* chamada final */
-.final{background:var(--tinta);color:#C9C5D0}
-.final h2{color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700}
-.final p{margin-top:18px;max-width:38em}
-.final .btn-cheio{margin-top:30px;background:#fff;color:var(--tinta)}
-.final .btn-cheio:hover{background:var(--vinho);color:#fff}
+.final{position:relative;overflow:hidden;background:radial-gradient(90% 70% at 85% 0%,#3A0A14 0%,var(--grafite) 60%);color:#C9CBD3;text-align:left}
+.final h2{color:#fff;font-size:clamp(2rem,5.6vw,3.4rem);font-weight:800}
+.final p{margin-top:18px;max-width:34em;font-size:1.06rem}
+.final .btn{margin-top:34px;font-size:1.08rem;padding:19px 30px}
 
 /* rodape */
-.rodape{background:var(--tinta);color:#8E8A96;padding-block:46px;border-top:1px solid rgba(255,255,255,.12);font-size:.9rem}
-.rodape-grade{display:grid;grid-template-columns:1fr;gap:28px}
-.rodape h4{font-family:var(--titulo);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 12px}
-.rodape a{color:#C9C5D0;text-decoration:none}
+.rodape{background:var(--grafite);color:#8E92A0;padding-block:46px calc(46px + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(255,255,255,.08);font-size:.9rem}
+.rodape-grade{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+.rodape h4{font-family:var(--titulo);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 12px}
+.rodape a{color:#C9CBD3;text-decoration:none}
 .rodape a:hover{color:#fff}
 .rodape ul{margin:0;padding:0;list-style:none}
 .rodape li + li{margin-top:7px}
-.rodape-fim{margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.82rem}
+.rodape-fim{margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.82rem}
 
 /* botao flutuante */
-.flutua{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:56px;height:56px;border-radius:50%;
-  background:#1faa52;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(23,22,26,.28)}
-.flutua svg{width:28px;height:28px;fill:#fff}
+.flutua{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:35;width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(180deg,#34C76B,var(--verde));display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 #157A3A,0 14px 24px -8px rgba(18,19,24,.45)}
+.flutua svg{width:29px;height:29px;fill:#fff}
+.flutua:active{transform:translateY(4px);box-shadow:0 1px 0 #157A3A}
 
-@media (min-width:860px){
-  .abertura{grid-template-columns:1.15fr .85fr;gap:54px}
-  .numeros{grid-template-columns:repeat(4,1fr)}
-  .duas{grid-template-columns:.9fr 1.1fr;gap:54px}
-  .duas-invertida{grid-template-columns:1.1fr .9fr}
-  .fazemos{grid-template-columns:1fr 1fr;column-gap:40px}
-  .passos{grid-template-columns:repeat(4,1fr)}
-  .prova-grade{grid-template-columns:repeat(3,1fr)}
+@media (min-width:880px){
+  .abertura{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px}
+  .palco{height:600px}
+  .blocos{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+  .duas{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px}
+  .tambor-caixa{height:380px}
+  .vitrine{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}
+  .rosca-linha{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+  .deck.ativo{max-width:560px;margin-inline:auto}
+  .deck.ativo + .deck-nav{max-width:560px;margin-inline:auto}
+  .leque{height:620px}
+  .leque button{width:280px}
   .rodape-grade{grid-template-columns:1.4fr 1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
 </style>
 <script src="/js/consentimento.js"></script>
 </head>
 <body>
-
 <header class="topo">
-  <div class="area topo-area">
-    <a href="#inicio" aria-label="Agência WeCare"><img src="/images/logo-wecare.png?v=3" alt="Agência WeCare" width="78" height="34"></a>
-    <a class="btn btn-cheio btn-curto" href="https://wa.me/5547996010374?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W2%29%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener">
-      <svg class="zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2 .9c.3.1.4.2.5.3.1.2.1.6-.1 1.1Z"/></svg>
-      Falar no WhatsApp
-    </a>
+  <div class="area">
+    <a href="#inicio" aria-label="Agência WeCare, início"><img src="/images/logo-wecare.png?v=3" alt="Agência WeCare" width="83" height="36"></a>
+    <a class="btn btn-pequeno" href="https://wa.me/5547996010374?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W2%29%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener"><svg class="zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2 .9c.3.1.4.2.5.3.1.2.1.6-.1 1.1Z"/></svg> WhatsApp</a>
   </div>
 </header>
 
 <main>
-
 <section id="inicio" class="area abertura">
   <div>
-    <p class="rotulo">Agência WeCare, Camboriú, Santa Catarina</p>
-    <h1>Dez anos cuidando da presença digital de quem vive das <em>redes sociais</em>.</h1>
-    <p class="abertura-texto">
-      A WeCare acompanha as mudanças do Instagram desde o começo, testa formatos todos os dias
-      e transformou essa prática em um processo próprio de crescimento, alcance e autoridade.
-    </p>
-    <div class="abertura-acoes">
-      <a class="btn btn-cheio" href="https://wa.me/5547996010374?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W2%29%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener">
-        <svg class="zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2 .9c.3.1.4.2.5.3.1.2.1.6-.1 1.1Z"/></svg>
-        Falar com a equipe
-      </a>
-      <a class="btn btn-vazio" href="#metodo">Ver como funciona</a>
+    <p class="rotulo">Agência WeCare · 10 anos</p>
+    <h1>Seu perfil visto por quem <em>ainda não te conhece.</em></h1>
+    <p class="apoio">Crescimento, alcance e autoridade nas redes sociais, com o mesmo método que levou os canais da WeCare a 11,5 milhões de visualizações.</p>
+    <div class="acoes">
+      <a class="btn" href="https://wa.me/5547996010374?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W2%29%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener"><svg class="zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2 .9c.3.1.4.2.5.3.1.2.1.6-.1 1.1Z"/></svg> Falar com Cláudia</a>
+      <a class="btn btn-claro" href="#metodo">Ver como funciona</a>
     </div>
-    <a class="selo" href="https://wa.me/5547996010374?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W2%29%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener">
-      <span class="selo-ponto"></span>Seu atendimento: <strong>Atendente Cláudia</strong>
-    </a>
+    <a class="selo" href="https://wa.me/5547996010374?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W2%29%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener"><span class="selo-ponto"></span>Seu atendimento: <strong>Atendente Cláudia</strong></a>
   </div>
 
-  <div class="abertura-foto">
-    <picture>
-      <source media="(max-width: 859px)" srcset="/images/hero-bg-mobile.jpg">
-      <img src="/images/hero-bg-desktop.jpg" alt="Leudair Vinter de Farias, CEO da Agência WeCare" fetchpriority="high">
-    </picture>
-  </div>
-</section>
-
-<hr class="linha-fina">
-
-<section class="bloco area">
-  <p class="rotulo">Os nossos próprios números</p>
-  <h2 class="titulo">O método aplicado nos canais da WeCare.</h2>
-  <div class="numeros" style="margin-top:30px">
-    <div class="numero"><strong>10</strong><span>Anos de experiência</span></div>
-    <div class="numero"><strong>11,5 mi</strong><span>Visualizações</span></div>
-    <div class="numero"><strong>2,1 mi</strong><span>Interações</span></div>
-    <div class="numero"><strong>228 mil</strong><span>Contas alcançadas</span></div>
-  </div>
-  <ul class="numeros-extra">
-    <li><b>1,4 mi+</b> seguidores</li>
-    <li><b>225 mil+</b> contas com engajamento</li>
-    <li><b>12.896</b> atividades no perfil</li>
-    <li><b>9.996</b> visitas ao perfil</li>
-    <li><b>2.900</b> toques em links externos</li>
-  </ul>
-  <p class="nota">Números dos canais da própria Agência WeCare, o mesmo trabalho que aplicamos em cada cliente.</p>
-</section>
-
-<section class="bloco bloco-areia">
-  <div class="area duas">
-    <div class="duas-foto">
-      <img src="/images/quem-e-wecare.jpg" alt="Leudair Vinter de Farias no ambiente da Agência WeCare" loading="lazy">
-    </div>
-    <div class="corpo">
-      <p class="rotulo">A agência</p>
-      <h2 class="titulo">Um mercado que muda toda semana, e uma equipe que acompanha.</h2>
-      <p style="margin-top:20px">
-        As redes sociais mudam as regras o tempo todo. Em dez anos, a WeCare aprendeu a ler essas
-        mudanças de perto, estudando o comportamento das plataformas e ajustando os processos a cada virada.
-      </p>
-      <p>
-        Esse caminho formou a especialidade da casa: crescimento, engajamento, alcance, distribuição de
-        conteúdo e construção de autoridade.
-      </p>
-      <p>
-        Aqui ninguém trabalha com número solto. Cada projeto tem estratégia, experiência e gente
-        acompanhando de perto.
-      </p>
-      <ul class="fazemos">
-        <li><b>01</b><span>Crescimento de audiência</span></li>
-        <li><b>02</b><span>Alcance e visualizações</span></li>
-        <li><b>03</b><span>Curtidas e interações</span></li>
-        <li><b>04</b><span>Compartilhamentos e reposts</span></li>
-        <li><b>05</b><span>Comentários e prova social</span></li>
-        <li><b>06</b><span>Distribuição de conteúdo</span></li>
-        <li><b>07</b><span>Construção de autoridade</span></li>
-        <li><b>08</b><span>Engajamento recorrente</span></li>
-      </ul>
-      <p class="plataformas">Instagram, TikTok, YouTube, Facebook e Kwai.</p>
-    </div>
-  </div>
-</section>
-
-<section id="metodo" class="bloco area">
-  <p class="rotulo">Como funciona</p>
-  <h2 class="titulo">Quatro etapas, sempre nessa ordem.</h2>
-  <div class="passos">
-    <div class="passo">
-      <b>Etapa 01</b>
-      <h3>Diagnóstico</h3>
-      <p>Entendemos o perfil, o posicionamento, o momento e o objetivo do cliente.</p>
-    </div>
-    <div class="passo">
-      <b>Etapa 02</b>
-      <h3>Estratégia</h3>
-      <p>Definimos as ações certas para ampliar presença, alcance, engajamento e autoridade.</p>
-    </div>
-    <div class="passo">
-      <b>Etapa 03</b>
-      <h3>Execução</h3>
-      <p>Aplicamos tudo de forma gradual, organizada e acompanhada de perto.</p>
-    </div>
-    <div class="passo">
-      <b>Etapa 04</b>
-      <h3>Acompanhamento</h3>
-      <p>Observamos o resultado, damos suporte humano e ajustamos a estratégia.</p>
-    </div>
-  </div>
-  <p class="nota">Cada perfil tem um momento, um público e um objetivo, por isso a estratégia é montada caso a caso.</p>
-</section>
-
-<section class="bloco bloco-areia">
-  <div class="area duas duas-invertida">
-    <div class="corpo">
-      <p class="rotulo">Resultados</p>
-      <h2 class="titulo">Alcance novo, não só a base que já seguia.</h2>
-      <p class="prova-destaque" style="margin-top:22px">
-        69% das interações vieram de pessoas que ainda não seguiam o perfil.
-      </p>
-      <p style="margin-top:18px">
-        Esse é o ponto que separa um perfil que cresce de um perfil que só conversa com quem já está lá.
-        Os canais da WeCare mostram isso na prática, com público novo entrando e interagindo.
-      </p>
-      <div class="prova-grade">
-        <img src="/images/resultado-insights.jpg" alt="Visualizações, interações, contas alcançadas e 69% de não seguidores" loading="lazy">
-        <img src="/images/resultado-seguidores.jpg" alt="Total de seguidores e atividade do perfil" loading="lazy">
-        <img src="/images/resultado-perfil-grid.jpg" alt="Perfil da Agência WeCare no Instagram" loading="lazy">
+  <div class="palco" id="palco" aria-label="Leudair Vinter de Farias, CEO da Agência WeCare, com os números dos canais da WeCare">
+    <div class="palco-chao"></div>
+    <div class="cena" id="cena">
+      <div class="retrato">
+        <img src="/images/b/leudair-terno-azul.jpg" alt="Leudair Vinter de Farias, CEO da Agência WeCare" fetchpriority="high">
+        <span class="retrato-borda"></span>
       </div>
+      <div class="ficha f1 flutua-1"><b>11,5 mi</b>visualizações</div>
+      <div class="ficha ficha-vermelha f2 flutua-2"><b>69%</b>de quem não seguia</div>
+      <div class="ficha f3 flutua-2"><b>2,1 mi</b>interações</div>
+      <div class="ficha f4 flutua-1"><b>1,4 mi+</b>seguidores</div>
     </div>
-    <div class="duas-foto">
-      <img src="/images/equipe.jpg" alt="Equipe da Agência WeCare" loading="lazy">
+    <p class="palco-dica">Arraste para girar</p>
+  </div>
+</section>
+
+<section class="faixa-numeros bloco">
+  <div class="area">
+    <p class="rotulo">Os nossos próprios números</p>
+    <h2 class="titulo">O método, aplicado primeiro em casa.</h2>
+    <div class="blocos">
+      <div class="bloco3d"><strong data-conta="10">10</strong><span>anos de experiência</span></div>
+      <div class="bloco3d destaque"><strong data-conta="11.5" data-sufixo=" mi" data-casas="1">11,5 mi</strong><span>visualizações</span></div>
+      <div class="bloco3d"><strong data-conta="2.1" data-sufixo=" mi" data-casas="1">2,1 mi</strong><span>interações</span></div>
+      <div class="bloco3d"><strong data-conta="228" data-sufixo=" mil">228 mil</strong><span>contas alcançadas</span></div>
     </div>
+    <ul class="extras">
+      <li><b>1,4 mi+</b> seguidores</li>
+      <li><b>225 mil+</b> contas com engajamento</li>
+      <li><b>12.896</b> atividades no perfil</li>
+      <li><b>9.996</b> visitas ao perfil</li>
+      <li><b>2.900</b> toques em links externos</li>
+    </ul>
+    <p class="nota">Números dos canais da própria Agência WeCare, o mesmo trabalho que aplicamos em cada cliente.</p>
   </div>
 </section>
 
 <section class="bloco area">
   <div class="duas">
-    <div class="duas-foto">
-      <img src="/images/ceo-retrato.jpg" alt="Retrato de Leudair Vinter de Farias, CEO da Agência WeCare" loading="lazy">
+    <div>
+      <p class="rotulo">A agência</p>
+      <h2 class="titulo">As redes mudam toda semana. A gente acompanha.</h2>
+      <p class="apoio">Em dez anos, a WeCare aprendeu a ler as mudanças das plataformas de perto e a ajustar o processo a cada virada.</p>
+      <p class="apoio">Aqui ninguém trabalha com número solto. Cada projeto tem estratégia, experiência e gente acompanhando de perto.</p>
+      <ul class="plataformas" aria-label="Plataformas">
+        <li>Instagram</li><li>TikTok</li><li>YouTube</li><li>Facebook</li><li>Kwai</li>
+      </ul>
     </div>
-    <div class="corpo">
-      <p class="rotulo">Quem conduz</p>
-      <h2 class="titulo">Leudair Vinter de Farias</h2>
-      <p style="margin-top:8px;color:var(--vinho);font-weight:600">CEO da Agência WeCare</p>
-      <p style="margin-top:20px">
-        Em dez anos de mercado, Leudair acompanhou as transformações das redes sociais, desenvolveu
-        estratégias, liderou a operação e transformou prática em processo.
-      </p>
-      <p>
-        É ele quem dá o tom do atendimento da casa: liderança presente, compromisso com o resultado e
-        proximidade em cada etapa.
-      </p>
-      <p>
-        Segue estudando o mercado e ajustando o processo, porque a rede de hoje não é a de ano passado.
-      </p>
-      <div class="assinatura"><span></span>Camboriú, Santa Catarina</div>
+    <div class="tambor-caixa" id="tamborCaixa" aria-label="O que a WeCare faz">
+      <div class="tambor-mira"></div>
+      <div class="tambor" id="tambor">
+        <div class="face"><b>01</b>Crescimento de audiência</div>
+        <div class="face"><b>02</b>Alcance e visualizações</div>
+        <div class="face"><b>03</b>Curtidas e interações</div>
+        <div class="face"><b>04</b>Compartilhamentos e reposts</div>
+        <div class="face"><b>05</b>Comentários e prova social</div>
+        <div class="face"><b>06</b>Distribuição de conteúdo</div>
+        <div class="face"><b>07</b>Construção de autoridade</div>
+        <div class="face"><b>08</b>Engajamento recorrente</div>
+      </div>
     </div>
   </div>
+
+  <div class="vitrine">
+    <figure class="quadro"><img src="/images/estrutura-fisica.jpg" alt="Fachada da Agência WeCare" loading="lazy"><figcaption>A casa da WeCare</figcaption></figure>
+    <figure class="quadro"><img src="/images/equipe.jpg" alt="Equipe da Agência WeCare trabalhando" loading="lazy"><figcaption>A equipe que acompanha cada perfil</figcaption></figure>
+  </div>
+</section>
+
+<section id="metodo" class="bloco metodo">
+  <div class="area">
+    <p class="rotulo">Como funciona</p>
+    <h2 class="titulo">Quatro etapas, sempre nessa ordem.</h2>
+    <p class="apoio">Cada perfil tem um momento, um público e um objetivo. Por isso a estratégia é montada caso a caso.</p>
+    <div class="deck" id="deck">
+      <article class="carta"><div class="num">Etapa<i>01</i></div><h3>Diagnóstico</h3><p>Entendemos o perfil, o posicionamento, o momento e o objetivo do cliente.</p></article>
+      <article class="carta"><div class="num">Etapa<i>02</i></div><h3>Estratégia</h3><p>Definimos as ações certas para ampliar presença, alcance, engajamento e autoridade.</p></article>
+      <article class="carta"><div class="num">Etapa<i>03</i></div><h3>Execução</h3><p>Aplicamos tudo de forma gradual, organizada e acompanhada de perto.</p></article>
+      <article class="carta"><div class="num">Etapa<i>04</i></div><h3>Acompanhamento</h3><p>Observamos o resultado, damos suporte humano e ajustamos a estratégia.</p></article>
+    </div>
+    <div class="deck-nav">
+      <div class="pontos" id="pontos" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
+      <button type="button" id="proxima">Próxima etapa</button>
+    </div>
+  </div>
+</section>
+
+<section class="bloco area">
+  <p class="rotulo">Resultados</p>
+  <h2 class="titulo">Alcance novo, não só a base que já seguia.</h2>
+  <div class="rosca-linha">
+    <div class="rosca-palco" aria-hidden="true">
+      <div class="rosca" id="rosca"></div>
+      <span class="rosca-num">69%</span>
+    </div>
+    <div>
+      <p class="frase-grande"><em>69% das interações</em> vieram de pessoas que ainda não seguiam o perfil.</p>
+      <p class="apoio">É o que separa um perfil que cresce de um perfil que só conversa com quem já está lá. Os canais da WeCare mostram isso na prática.</p>
+    </div>
+  </div>
+  <div class="leque" id="leque">
+    <button type="button" aria-label="Ver insights da conta"><img src="/images/resultado-insights.jpg" alt="Insights: 11,5 milhões de visualizações e 2,1 milhões de interações" loading="lazy"></button>
+    <button type="button" aria-label="Ver seguidores"><img src="/images/resultado-seguidores.jpg" alt="1,4 milhão de seguidores e atividade do perfil" loading="lazy"></button>
+    <button type="button" aria-label="Ver o perfil"><img src="/images/resultado-perfil-grid.jpg" alt="Perfil da Agência WeCare no Instagram" loading="lazy"></button>
+  </div>
+  <p class="leque-dica">Toque num celular para trazer para frente</p>
+</section>
+
+<section class="bloco faixa-numeros">
+  <div class="area duas">
+    <div class="ceo-foto">
+      <figure class="quadro"><img src="/images/b/leudair-escritorio.jpg" alt="Leudair Vinter de Farias no escritório da Agência WeCare" loading="lazy"></figure>
+    </div>
+    <div>
+      <p class="rotulo">Quem conduz</p>
+      <h2 class="titulo">Leudair Vinter de Farias</h2>
+      <p class="cargo">CEO da Agência WeCare</p>
+      <p class="apoio">Em dez anos de mercado, acompanhou as transformações das redes sociais, desenvolveu estratégias, liderou a operação e transformou prática em processo.</p>
+      <p class="apoio">É ele quem dá o tom do atendimento: liderança presente, compromisso com o resultado e proximidade em cada etapa.</p>
+      <p class="assina">Camboriú, Santa Catarina</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="bloco area">
+  <p class="rotulo">Por trás da WeCare</p>
+  <h2 class="titulo">Quem aparece também está no dia a dia.</h2>
+  <div class="cubo-palco" id="cuboPalco" aria-label="Fotos de Leudair Vinter de Farias">
+    <div class="cubo-sombra"></div>
+    <div class="cubo" id="cubo">
+      <img src="/images/b/cubo-terno-preto.jpg" alt="Leudair de terno no escritório da WeCare" loading="lazy">
+      <img src="/images/b/cubo-sala.jpg" alt="Leudair na sala da equipe" loading="lazy">
+      <img src="/images/b/cubo-carro.jpg" alt="Leudair sorrindo na janela do carro" loading="lazy">
+      <img src="/images/b/cubo-perfil.jpg" alt="Leudair segurando um perfil antigo em chamas" loading="lazy">
+      <span class="cubo-tampa"></span>
+    </div>
+  </div>
+  <p class="cubo-dica">Arraste para girar o cubo</p>
 </section>
 
 <section class="bloco final">
   <div class="area">
-    <h2>Vamos conversar sobre o seu perfil?</h2>
-    <p>
-      Conte para a equipe onde o seu perfil está hoje e o que você quer alcançar. A conversa é pelo
-      WhatsApp, sem compromisso, e já sai de lá com uma orientação.
-    </p>
-    <a class="btn btn-cheio" href="https://wa.me/5547996010374?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W2%29%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener">
-      <svg class="zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2 .9c.3.1.4.2.5.3.1.2.1.6-.1 1.1Z"/></svg>
-      Falar com Atendente Cláudia
-    </a>
+    <h2>Vamos olhar o seu perfil juntos?</h2>
+    <p>Conte para a equipe onde o seu perfil está hoje e onde quer chegar. A conversa é pelo WhatsApp, sem compromisso, e você já sai com uma orientação.</p>
+    <a class="btn" href="https://wa.me/5547996010374?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W2%29%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener"><svg class="zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2 .9c.3.1.4.2.5.3.1.2.1.6-.1 1.1Z"/></svg> Falar com Cláudia</a>
   </div>
 </section>
-
 </main>
 
 <footer class="rodape">
   <div class="area">
     <div class="rodape-grade">
       <div>
-        <img src="/images/logo-wecare.png?v=3" alt="Agência WeCare" width="78" height="34" style="margin-bottom:14px">
+        <img src="/images/logo-wecare.png?v=3" alt="Agência WeCare" width="83" height="36" style="margin-bottom:14px">
         <p>Estratégia, alcance, engajamento e autoridade nas redes sociais.</p>
       </div>
       <div>
@@ -376,9 +446,118 @@ p{margin:0}
   </div>
 </footer>
 
-<a class="flutua" href="https://wa.me/5547996010374?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W2%29%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2 .9c.3.1.4.2.5.3.1.2.1.6-.1 1.1Z"/></svg>
-</a>
+<a class="flutua" href="https://wa.me/5547996010374?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W2%29%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg class="zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2 .9c.3.1.4.2.5.3.1.2.1.6-.1 1.1Z"/></svg></a>
 
+<script>
+(function(){
+  var calmo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function visivel(el, cb){
+    if(!('IntersectionObserver' in window)){cb(true);return;}
+    new IntersectionObserver(function(es){es.forEach(function(e){cb(e.isIntersecting);});},{threshold:.15}).observe(el);
+  }
+  function arrasto(el, eixo, aoMover, aoSoltar){
+    var ini=null, ult=0;
+    el.addEventListener('pointerdown',function(e){ini={x:e.clientX,y:e.clientY};ult=eixo==='x'?e.clientX:e.clientY;});
+    window.addEventListener('pointermove',function(e){if(!ini)return;var v=eixo==='x'?e.clientX:e.clientY;aoMover(v-ult);ult=v;});
+    window.addEventListener('pointerup',function(e){if(!ini)return;var d=eixo==='x'?e.clientX-ini.x:e.clientY-ini.y;ini=null;if(aoSoltar)aoSoltar(d);});
+    window.addEventListener('pointercancel',function(){ini=null;});
+  }
+
+  /* palco do topo: balanca sozinho, segue o mouse e gira com o dedo */
+  var palco=document.getElementById('palco'), cena=document.getElementById('cena');
+  var ry=-16, rx=4, alvoY=-16, alvoX=4, mao=false, t0=performance.now(), palcoVivo=true;
+  visivel(palco,function(v){palcoVivo=v;});
+  palco.addEventListener('pointermove',function(e){
+    if(e.pointerType!=='mouse')return;
+    var r=palco.getBoundingClientRect();
+    alvoY=((e.clientX-r.left)/r.width-.5)*36; alvoX=-((e.clientY-r.top)/r.height-.5)*16;
+  });
+  palco.addEventListener('pointerleave',function(){mao=false;});
+  arrasto(palco,'x',function(dx){mao=true;alvoY=Math.max(-40,Math.min(40,alvoY+dx*.35));},function(){setTimeout(function(){mao=false;},1600);});
+  function quadro(t){
+    if(palcoVivo){
+      if(!mao&&!calmo){ alvoY=Math.sin((t-t0)/2600)*18; alvoX=4+Math.sin((t-t0)/3400)*4; }
+      ry+=(alvoY-ry)*.08; rx+=(alvoX-rx)*.08;
+      cena.style.setProperty('--ry',ry.toFixed(2)+'deg'); cena.style.setProperty('--rx',rx.toFixed(2)+'deg');
+    }
+    requestAnimationFrame(quadro);
+  }
+  requestAnimationFrame(quadro);
+
+  /* numeros contam ate o valor real quando aparecem */
+  document.querySelectorAll('[data-conta]').forEach(function(el){
+    if(calmo)return;
+    var fim=parseFloat(el.dataset.conta), casas=+(el.dataset.casas||0), suf=el.dataset.sufixo||'', feito=false;
+    visivel(el,function(v){
+      if(!v||feito)return; feito=true; var ini=performance.now();
+      (function passo(t){
+        var p=Math.min(1,(t-ini)/1400), e=1-Math.pow(1-p,3);
+        el.textContent=(fim*e).toFixed(casas).replace('.',',')+suf;
+        if(p<1)requestAnimationFrame(passo);
+      })(ini);
+    });
+  });
+
+  /* tambor dos servicos: gira de face em face, o dedo arrasta */
+  var tambor=document.getElementById('tambor'), caixa=document.getElementById('tamborCaixa');
+  var faces=tambor.querySelectorAll('.face'), passoAng=360/faces.length;
+  var raio=Math.round(64/2/Math.tan(Math.PI/faces.length))+6;
+  tambor.style.transform='translateZ(-'+raio+'px) rotateX(var(--giro,0deg))';
+  faces.forEach(function(f,i){f.style.transform='rotateX('+(-i*passoAng)+'deg) translateZ('+raio+'px)';});
+  var giro=0, alvo=0, tocando=false, tamborVivo=true;
+  visivel(caixa,function(v){tamborVivo=v;});
+  arrasto(caixa,'y',function(dy){tocando=true;alvo+=dy*.6;giro=alvo;},function(){alvo=Math.round(alvo/passoAng)*passoAng;tocando=false;});
+  setInterval(function(){if(!tocando&&tamborVivo&&!calmo&&!document.hidden)alvo+=passoAng;},2200);
+  (function gira(){
+    giro+=(alvo-giro)*.09; tambor.style.setProperty('--giro',giro.toFixed(2)+'deg');
+    requestAnimationFrame(gira);
+  })();
+
+  /* baralho das etapas */
+  var deck=document.getElementById('deck'), cartas=[].slice.call(deck.children), pontos=[].slice.call(document.getElementById('pontos').children), atual=0;
+  deck.classList.add('ativo');
+  function arruma(){
+    cartas.forEach(function(c,i){
+      var d=(i-atual+cartas.length)%cartas.length;
+      c.style.zIndex=10-d;
+      c.style.transform='translateY('+(d*16)+'px) translateZ('+(-d*60)+'px) rotateX('+(d?6:0)+'deg)';
+      c.style.opacity=d>2?0:1; c.style.filter='brightness('+(1-d*.12)+')';
+      c.setAttribute('aria-hidden',d?'true':'false');
+    });
+    pontos.forEach(function(p,i){p.classList.toggle('on',i===atual);});
+  }
+  function avanca(n){atual=(atual+n+cartas.length)%cartas.length;arruma();}
+  document.getElementById('proxima').addEventListener('click',function(){avanca(1);});
+  arrasto(deck,'x',function(){},function(d){if(Math.abs(d)>40)avanca(d<0?1:-1);});
+  arruma();
+
+  /* rosca 3D dos 69%: camadas empilhadas dao a espessura */
+  var rosca=document.getElementById('rosca');
+  for(var i=0;i<14;i++){var c=document.createElement('div');c.className='rosca-camada'+(i<13?' rosca-lado':'');c.style.transform='translateZ('+(i*1.6)+'px)';rosca.appendChild(c);}
+  var rz=-20, roscaViva=true; visivel(rosca,function(x){roscaViva=x;});
+  (function roda(){ if(roscaViva&&!calmo){rz+=.15;rosca.style.setProperty('--rz',rz+'deg');} requestAnimationFrame(roda); })();
+
+
+  /* cubo de fotos: gira de face em face, o dedo arrasta */
+  var cubo=document.getElementById('cubo'), cuboPalco=document.getElementById('cuboPalco');
+  var cy=0, cAlvo=0, cMao=false, cuboVivo=true; visivel(cuboPalco,function(x){cuboVivo=x;});
+  arrasto(cuboPalco,'x',function(dx){cMao=true;cAlvo+=dx*.5;cy=cAlvo;},function(){cAlvo=Math.round(cAlvo/90)*90;cMao=false;});
+  setInterval(function(){if(!cMao&&cuboVivo&&!calmo&&!document.hidden)cAlvo-=90;},2800);
+  (function giraCubo(){cy+=(cAlvo-cy)*.07;cubo.style.setProperty('--cy',cy.toFixed(2)+'deg');requestAnimationFrame(giraCubo);})();
+
+  /* celulares em leque */
+  var leque=document.getElementById('leque'), cel=[].slice.call(leque.children), frente=1;
+  function abre(){
+    cel.forEach(function(b,i){
+      var d=i-frente;
+      b.style.zIndex=10-Math.abs(d);
+      b.style.transform='translateX(calc(-50% + '+(d*42)+'%)) translateZ('+(-Math.abs(d)*140)+'px) rotateY('+(-d*28)+'deg)';
+      b.style.filter='brightness('+(d?.78:1)+')';
+    });
+  }
+  cel.forEach(function(b,i){b.addEventListener('click',function(){frente=i;abre();});});
+  abre();
+})();
+</script>
 </body>
 </html>
