@@ -84,6 +84,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .btn-ghost { border: 1px solid rgba(255,255,255,0.3); color: var(--white); }
 .btn-ghost:hover { border-color: var(--red-light); color: var(--red-light); transform: translateY(-3px); }
 .btn-lg { padding: 17px 36px; font-size: 0.98rem; }
+.btn-play-icone { flex: 0 0 auto; width: 22px; height: 22px; }
 .btn-header { padding: 11px 24px; font-size: 0.82rem; }
 
 /* ============================================================
