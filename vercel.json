@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "routes": [
+    {
+      "src": "^/(?!images/|css/|js/|videos/|b/)(.*)$",
+      "has": [{ "type": "host", "value": "agenciawecare.com.br" }],
+      "dest": "/b/$1"
+    },
+    {
+      "src": "^/(?!images/|css/|js/|videos/|b/)(.*)$",
+      "has": [{ "type": "host", "value": "www.agenciawecare.com.br" }],
+      "dest": "/b/$1"
+    },
+    { "handle": "filesystem" }
+  ]
+}
