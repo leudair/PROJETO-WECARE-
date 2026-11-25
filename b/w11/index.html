@@ -55,7 +55,7 @@ p{margin:0}
 .btn-claro{--lado:#BFC4CE;background:linear-gradient(180deg,#fff,#F4F5F8);color:var(--tinta);box-shadow:0 6px 0 var(--lado),0 14px 24px -10px rgba(18,19,24,.25)}
 .btn-pequeno{padding:10px 16px;font-size:.88rem;border-radius:11px;box-shadow:0 4px 0 var(--lado),0 10px 18px -8px rgba(212,17,46,.5)}
 .btn-pequeno:active{transform:translateY(3px);box-shadow:0 1px 0 var(--lado)}
-.btn:focus-visible,.selo:focus-visible,.deck-nav button:focus-visible,.leque button:focus-visible{outline:3px solid var(--tinta);outline-offset:4px}
+.btn:focus-visible,.selo:focus-visible,.deck-nav button:focus-visible{outline:3px solid var(--tinta);outline-offset:4px}
 .zap{width:19px;height:19px;flex:0 0 auto;fill:currentColor}
 
 /* topo */
@@ -167,24 +167,71 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .pontos span.on{width:24px;border-radius:8px;background:var(--vermelho-luz)}
 .metodo .nota{color:#8E92A0;margin-top:26px}
 
-/* resultados: rosca 3D e celulares em leque */
+/* resultados: grafico de colunas 3D */
 .rosca-linha{display:grid;grid-template-columns:minmax(0,1fr);gap:30px;align-items:center;margin-top:34px}
-.rosca-palco{position:relative;height:250px;perspective:800px;display:grid;place-items:center}
-.rosca-num{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--titulo);font-size:3rem;font-weight:800;color:var(--tinta);letter-spacing:-.05em;pointer-events:none;padding-bottom:6px}
-.rosca{position:relative;width:220px;height:220px;transform-style:preserve-3d;transform:rotateX(56deg) rotateZ(var(--rz,-20deg))}
-.rosca-camada{position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--vermelho) 0 69%,#C5CAD3 69% 100%);
-  -webkit-mask:radial-gradient(circle,transparent 46%,#000 47%);mask:radial-gradient(circle,transparent 46%,#000 47%)}
-.rosca-lado{filter:brightness(.62)}
-.rosca-valor{position:absolute;inset:0;display:grid;place-items:center;transform:translateZ(26px) rotateZ(calc(var(--rz,-20deg) * -1)) rotateX(-56deg)}
-.rosca-valor b{font-family:var(--titulo);font-size:3.1rem;font-weight:800;color:var(--tinta);letter-spacing:-.05em;text-shadow:0 10px 18px rgba(18,19,24,.18)}
+.grafico{position:relative;border-radius:26px;background:linear-gradient(180deg,#FFFFFF 0%,#F3F4F7 100%);border:1px solid var(--linha);box-shadow:0 6px 0 var(--linha),0 30px 50px -34px rgba(18,19,24,.45);padding:22px 18px 18px;overflow:hidden}
+.graf-tit{font-family:var(--titulo);font-weight:600;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-3);text-align:center}
+.graf-cena{position:relative;height:270px;perspective:900px;perspective-origin:50% 20%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:34px}
+.graf-mundo{--w:86px;--d:86px;--u:2.6px;position:relative;width:250px;height:190px;transform-style:preserve-3d;transform:rotateX(-14deg) rotateY(var(--gy,-26deg))}
+.graf-chao{position:absolute;left:50%;bottom:0;width:340px;height:240px;margin:0 0 -120px -170px;transform:rotateX(90deg);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(18,19,24,.16),rgba(18,19,24,.06) 60%,rgba(18,19,24,0))}
+.col{position:absolute;bottom:0;width:var(--w);height:0;transform-style:preserve-3d;transition:height 1.5s cubic-bezier(.2,.85,.2,1)}
+.grafico.vivo .col{height:calc(var(--v) * var(--u))}
+.col-cinza{left:22px}.col-verm{left:142px;transition-delay:.25s}
+.col i{position:absolute;display:block}
+.col .cf{inset:0;transform:translateZ(calc(var(--d) / 2));border-radius:3px 3px 0 0}
+.col .cl{top:0;height:100%;width:var(--d);left:calc((var(--w) - var(--d)) / 2);transform:rotateY(90deg) translateZ(calc(var(--w) / 2))}
+.col .cn{top:0;height:100%;width:var(--d);left:calc((var(--w) - var(--d)) / 2);transform:rotateY(-90deg) translateZ(calc(var(--w) / 2))}
+.col .ct{left:0;width:var(--w);height:var(--d);top:calc(var(--d) / -2);transform:rotateX(90deg)}
+.col-verm .cf{background:linear-gradient(100deg,rgba(255,255,255,.22) 0 8%,rgba(255,255,255,0) 30%),linear-gradient(180deg,#FF4560 0%,#D4112E 45%,#A20D24 100%)}
+.col-verm .cl{background:linear-gradient(180deg,#9C0C22,#6E0717)}
+.col-verm .cn{background:#B50F28}
+.col-verm .ct{background:linear-gradient(135deg,#FF7A8C,#F0304B)}
+.col-cinza .cf{background:linear-gradient(100deg,rgba(255,255,255,.6) 0 8%,rgba(255,255,255,0) 30%),linear-gradient(180deg,#E8EBF0 0%,#C9CED7 100%)}
+.col-cinza .cl{background:linear-gradient(180deg,#A9AFBA,#8C929E)}
+.col-cinza .cn{background:#D3D7DE}
+.col-cinza .ct{background:linear-gradient(135deg,#FFFFFF,#E4E7EC)}
+.col .cf b{position:absolute;left:0;right:0;top:12px;text-align:center;font-family:var(--titulo);font-weight:800;font-size:1.55rem;letter-spacing:-.04em;line-height:1}
+.col-verm .cf b{color:#fff;text-shadow:0 2px 8px rgba(80,0,10,.45)}
+.col-cinza .cf b{color:var(--tinta-2)}
+.graf-legenda{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:4px}
+.graf-legenda div{display:flex;align-items:center;gap:9px;padding:10px 12px;border-radius:12px;background:var(--fundo);font-size:.84rem;line-height:1.25;color:var(--tinta-2)}
+.graf-legenda i{flex:0 0 auto;width:12px;height:12px;border-radius:3px;background:#C9CED7}
+.graf-legenda .on i{background:var(--vermelho)}
+.graf-legenda .on{background:#FDECEF;color:var(--tinta)}
 .frase-grande{font-family:var(--titulo);font-size:clamp(1.4rem,3.6vw,2.1rem);font-weight:700;color:var(--tinta);line-height:1.18;letter-spacing:-.02em}
 .frase-grande em{font-style:normal;color:var(--vermelho)}
 
-.leque{position:relative;height:clamp(380px,106vw,560px);margin-top:46px;perspective:1100px}
-.leque button{position:absolute;left:50%;top:0;width:min(58%,300px);padding:0;border:0;background:none;cursor:pointer;border-radius:26px;
-  transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .7s;transform-style:preserve-3d}
-.leque img{width:100%;aspect-ratio:562/1000;object-fit:cover;border-radius:26px;box-shadow:0 40px 50px -30px rgba(18,19,24,.7)}
-.leque-dica{text-align:center;font-size:.8rem;color:var(--tinta-3);margin-top:8px}
+/* resultados: celulares girando num palco escuro, com posts flutuando ao fundo */
+.orbita{position:relative;height:clamp(470px,128vw,640px);margin-top:46px;border-radius:28px;overflow:hidden;isolation:isolate;
+  background:radial-gradient(60% 45% at 50% 55%,#4A0A17 0%,rgba(74,10,23,0) 70%),radial-gradient(120% 90% at 50% 0%,#1A1B23 0%,#08080B 70%);
+  box-shadow:0 40px 60px -40px rgba(18,19,24,.8);touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.orb-fundo,.orb-cena{position:absolute;inset:0;perspective:1000px;transform-style:preserve-3d}
+.orb-post{position:absolute;left:50%;top:50%;width:var(--t,64px);aspect-ratio:4/5;margin:calc(var(--t,64px) * -.625) 0 0 calc(var(--t,64px) / -2);border-radius:10px;
+  background:url(/images/b/posts.jpg) var(--px,0%) 0/600% 100% no-repeat;box-shadow:0 14px 24px -10px rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.12);will-change:transform,opacity}
+.orb-chip{position:absolute;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;z-index:20;
+  background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.25);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 20px -8px rgba(0,0,0,.7);animation:boia 6s ease-in-out infinite}
+.orb-chip svg{width:20px;height:20px;fill:#fff}
+.orb-chip.c1{left:7%;top:12%}.orb-chip.c2{right:8%;top:20%;animation-delay:-2s}.orb-chip.c3{left:10%;bottom:16%;animation-delay:-4s}.orb-chip.c4{right:9%;bottom:11%;animation-delay:-1s}
+.orb-chip.c1 svg{fill:#FF3B55}
+@keyframes boia{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.orb-anel{position:absolute;left:50%;top:83%;width:82%;height:70px;margin:-35px 0 0 -41%;border-radius:50%;border:1.5px solid rgba(255,59,85,.55);
+  box-shadow:0 0 24px rgba(255,59,85,.45),inset 0 0 24px rgba(255,59,85,.3);z-index:1}
+.orb-anel::after{content:"";position:absolute;inset:-14px -6%;border-radius:50%;border:1px solid rgba(255,255,255,.12)}
+.orb-luz{position:absolute;left:50%;top:83%;width:70%;height:60px;margin:-30px 0 0 -35%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,59,85,.55),rgba(255,59,85,0));filter:blur(6px);z-index:1}
+.orb-cel{position:absolute;left:50%;top:50%;width:var(--cw);aspect-ratio:562/1000;margin:calc(var(--cw) * -.89) 0 0 calc(var(--cw) / -2);padding:0;border:0;background:none;cursor:pointer;
+  will-change:transform,filter;-webkit-tap-highlight-color:transparent}
+.orb-cena{--cw:min(64%,300px)}
+.orb-cel img{width:100%;height:100%;object-fit:cover;pointer-events:none;
+  -webkit-mask:linear-gradient(90deg,transparent 9%,#000 21%,#000 82%,transparent 94%),linear-gradient(180deg,transparent 3%,#000 9%,#000 86%,transparent 95%);
+  -webkit-mask-composite:source-in;mask:linear-gradient(90deg,transparent 9%,#000 21%,#000 82%,transparent 94%),linear-gradient(180deg,transparent 3%,#000 9%,#000 86%,transparent 95%);mask-composite:intersect}
+.orb-cel:focus-visible{outline:3px solid #fff;outline-offset:-30px}
+.leque-dica{text-align:center;font-size:.8rem;color:var(--tinta-3);margin-top:12px}
+.zoom{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;background:rgba(8,8,11,.92);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.zoom[hidden]{display:none}
+.zoom img{max-height:88vh;max-width:100%;width:auto;border-radius:18px}
+.zoom button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer}
 
 /* quem conduz */
 .ceo-foto{position:relative;perspective:1000px}
@@ -195,30 +242,59 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .assina::before{content:"";width:34px;height:2px;border-radius:2px;background:var(--vermelho)}
 
 
-/* cubo de fotos */
-.cubo-palco{height:340px;perspective:1000px;display:grid;place-items:center;margin-top:30px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.cubo{--l:240px;position:relative;width:var(--l);height:var(--l);transform-style:preserve-3d;transform:rotateX(-12deg) rotateY(var(--cy,0deg));will-change:transform}
-.cubo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
-.cubo img:nth-child(1){transform:translateZ(calc(var(--l)/2))}
-.cubo img:nth-child(2){transform:rotateY(90deg) translateZ(calc(var(--l)/2))}
-.cubo img:nth-child(3){transform:rotateY(180deg) translateZ(calc(var(--l)/2))}
-.cubo img:nth-child(4){transform:rotateY(-90deg) translateZ(calc(var(--l)/2))}
-.cubo-tampa{position:absolute;inset:0;background:linear-gradient(135deg,var(--vermelho),var(--vermelho-2));transform:rotateX(90deg) translateZ(calc(var(--l)/2))}
-.cubo-sombra{position:absolute;left:50%;top:50%;width:300px;height:60px;margin:150px 0 0 -150px;border-radius:50%;background:radial-gradient(closest-side,rgba(18,19,24,.35),rgba(18,19,24,0));filter:blur(6px)}
-.cubo-dica{text-align:center;font-size:.8rem;color:var(--tinta-3)}
-@media (min-width:880px){.cubo{--l:300px}.cubo-palco{height:420px}.cubo-sombra{margin-top:190px}}
+/* por tras da WeCare: cartao 3D com foto e texto, botoes de vidro */
+.gal-sec{overflow-x:clip}
+.galeria{position:relative;margin-top:34px;perspective:1400px;touch-action:pan-y}
+.gal-trilho{display:grid}
+.gal-item{grid-area:1/1;display:grid;grid-template-columns:minmax(0,1fr);border-radius:26px;overflow:hidden;background:var(--branco);border:1px solid var(--linha);
+  box-shadow:0 7px 0 var(--linha),0 40px 60px -36px rgba(18,19,24,.55);transform-origin:50% 50%;
+  transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s,filter .8s;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.gal-item[data-p="0"]{z-index:3}
+.gal-item[data-p="1"]{z-index:2;transform:translateX(9%) translateZ(-140px) rotateY(-16deg);filter:brightness(.82);pointer-events:none}
+.gal-item[data-p="-1"]{z-index:1;transform:translateX(-70%) translateZ(-200px) rotateY(48deg);opacity:0;pointer-events:none}
+.gal-item[data-p="2"]{z-index:0;transform:translateX(16%) translateZ(-280px) rotateY(-22deg);opacity:0;pointer-events:none}
+.gal-foto{position:relative;margin:0;aspect-ratio:1/1;overflow:hidden;background:var(--grafite)}
+.gal-foto img{width:100%;height:100%;object-fit:cover}
+.gal-foto::after{content:"";position:absolute;inset:auto 0 0;height:40%;background:linear-gradient(180deg,rgba(18,19,24,0),rgba(18,19,24,.55))}
+.gal-txt{padding:24px 22px 26px}
+.gal-txt small{display:block;font-family:var(--titulo);font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vermelho)}
+.gal-txt h3{margin-top:10px;font-size:clamp(1.35rem,3.4vw,1.9rem);font-weight:700}
+.gal-txt p{margin-top:12px;font-size:1.02rem}
+.vidro-barra{position:absolute;left:50%;bottom:16px;z-index:2;display:flex;align-items:center;gap:6px;padding:6px;transform:translateX(-50%);border-radius:999px;
+  background:linear-gradient(145deg,rgba(255,255,255,.34),rgba(255,255,255,.1));border:1px solid rgba(255,255,255,.45);
+  -webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 14px 30px -12px rgba(0,0,0,.6)}
+.vidro{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;padding:0;cursor:pointer;color:#fff;
+  background:linear-gradient(160deg,rgba(255,255,255,.42),rgba(255,255,255,.12));border:1px solid rgba(255,255,255,.55);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -6px 12px rgba(0,0,0,.12),0 4px 10px -4px rgba(0,0,0,.45);transition:transform .15s}
+.vidro:active{transform:scale(.92)}
+.vidro svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.vidro:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.gal-conta{min-width:56px;text-align:center;font-family:var(--titulo);font-weight:600;font-size:.9rem;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.gal-conta b{font-weight:800}
+@media (min-width:760px){
+  .gal-item{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center}
+  .gal-foto{aspect-ratio:auto;height:100%;min-height:440px}
+  .gal-txt{padding:40px 44px}
+  .gal-item[data-p="1"]{transform:translateX(3%) translateZ(-120px) rotateY(-8deg)}
+}
 
-/* globo dos paises */
+/* globo dos paises: mundo real em 3D (WebGL) com as conexoes por cima */
 .globo-linha{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:center;margin-top:30px}
-.globo-palco{position:relative;width:min(100%,440px);aspect-ratio:1;margin:0 auto;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.globo-palco canvas{width:100%;height:100%;display:block}
+.globo-palco{position:relative;width:100%;max-width:560px;aspect-ratio:1;margin:0 auto;border-radius:30px;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;
+  background:radial-gradient(55% 55% at 50% 50%,#13254A 0%,#0A1226 45%,#05070E 100%);box-shadow:0 7px 0 #03040A,0 40px 60px -36px rgba(5,7,14,.9)}
+.globo-palco::before{content:"";position:absolute;inset:0;opacity:.7;
+  background-image:radial-gradient(1px 1px at 12% 18%,#fff,transparent),radial-gradient(1px 1px at 82% 12%,#fff,transparent),radial-gradient(1.4px 1.4px at 68% 84%,#fff,transparent),
+  radial-gradient(1px 1px at 22% 74%,#fff,transparent),radial-gradient(1px 1px at 91% 58%,#cfe0ff,transparent),radial-gradient(1.2px 1.2px at 8% 46%,#fff,transparent),
+  radial-gradient(1px 1px at 44% 6%,#fff,transparent),radial-gradient(1px 1px at 57% 95%,#cfe0ff,transparent),radial-gradient(1px 1px at 34% 90%,#fff,transparent),radial-gradient(1px 1px at 95% 88%,#fff,transparent)}
+.globo-palco canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.globo-dica{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:.76rem;color:rgba(255,255,255,.55);pointer-events:none}
 .paises{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
 .paises li{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:16px;background:var(--branco);border:1px solid var(--linha);box-shadow:0 5px 0 var(--linha),0 14px 22px -16px rgba(18,19,24,.4)}
 .paises b{font-family:var(--titulo);font-size:1.02rem;color:var(--tinta);letter-spacing:-.01em}
 .paises span{font-size:.82rem;color:var(--tinta-3)}
 .paises .base{background:var(--vermelho);border-color:var(--vermelho);box-shadow:0 5px 0 var(--vermelho-2),0 14px 22px -14px rgba(212,17,46,.6)}
 .paises .base b,.paises .base span{color:#fff}
-@media (min-width:880px){.globo-linha{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (min-width:880px){.globo-linha{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
 /* video da metodologia */
 .video-card{position:relative;display:block;margin-top:44px;border-radius:22px;overflow:hidden;transform:perspective(1000px) rotateX(6deg);transform-origin:50% 100%;box-shadow:0 34px 50px -26px rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.1)}
 .video-card img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:brightness(.62)}
@@ -231,8 +307,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 .marcos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:26px 0 0;padding:0;list-style:none}
 .marcos li{display:flex;flex-direction:column;gap:2px;padding:12px 12px 14px;border-radius:14px;background:var(--fundo);border:1px solid var(--linha);box-shadow:0 4px 0 var(--linha)}
-.marcos b{font-family:var(--titulo);font-size:.92rem;white-space:nowrap;color:var(--tinta);letter-spacing:-.02em;line-height:1.15}
-.marcos span{font-size:.78rem;color:var(--tinta-3);line-height:1.3}
+.marcos b{font-family:var(--titulo);font-size:.98rem;color:var(--tinta);letter-spacing:-.02em;line-height:1.15}
+.marcos span{font-size:.8rem;color:var(--tinta-2);line-height:1.3}
 /* chamada final */
 .final{position:relative;overflow:hidden;background:radial-gradient(90% 70% at 85% 0%,#3A0A14 0%,var(--grafite) 60%);color:#C9CBD3;text-align:left}
 .final h2{color:#fff;font-size:clamp(2rem,5.6vw,3.4rem);font-weight:800}
@@ -262,11 +338,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .duas{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px}
   .tambor-caixa{height:380px}
   .vitrine{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}
-  .rosca-linha{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+  .rosca-linha{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
   .deck.ativo{max-width:560px;margin-inline:auto}
   .deck.ativo + .deck-nav{max-width:560px;margin-inline:auto}
-  .leque{height:620px}
-  .leque button{width:280px}
+  .orb-cena{--cw:300px}
   .rodape-grade{grid-template-columns:1.4fr 1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){
@@ -339,9 +414,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 <section class="bloco area" id="onde">
   <p class="rotulo">Onde atendemos</p>
   <h2 class="titulo">Do Brasil para o mundo.</h2>
-  <p class="apoio">A WeCare atende clientes no Brasil, nos Estados Unidos, no Canadá e em toda a Europa. Todo o atendimento é pelo WhatsApp, de onde você estiver.</p>
+  <p class="apoio">Em dez anos, a WeCare conquistou clientes em vários países. Hoje atende no Brasil, nos Estados Unidos, no Canadá e em toda a Europa, sempre pelo WhatsApp, de onde você estiver.</p>
   <div class="globo-linha">
-    <div class="globo-palco" id="globoPalco"><canvas id="globo" data-br="Brasil" data-us="Estados Unidos" data-ca="Canadá" data-eu="Europa" aria-label="Globo com Brasil, Estados Unidos, Canadá e Europa marcados" role="img"></canvas></div>
+    <div class="globo-palco" id="globoPalco"><canvas id="globo" data-br="Brasil" data-us="Estados Unidos" data-ca="Canadá" data-eu="Europa" aria-label="Globo com Brasil, Estados Unidos, Canadá e Europa marcados" role="img"></canvas><canvas id="globoArcos" aria-hidden="true"></canvas><p class="globo-dica">Arraste para girar o mundo</p></div>
     <ul class="paises">
       <li class="base"><b>Brasil</b><span>Sede em Camboriú, SC</span></li>
       <li><b>Estados Unidos</b><span>Atendimento online</span></li>
@@ -409,21 +484,41 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   <p class="rotulo">Resultados</p>
   <h2 class="titulo">Alcance novo, não só a base que já seguia.</h2>
   <div class="rosca-linha">
-    <div class="rosca-palco" aria-hidden="true">
-      <div class="rosca" id="rosca"></div>
-      <span class="rosca-num">69%</span>
+    <div class="grafico" id="grafico">
+      <p class="graf-tit">De onde vieram as interações</p>
+      <div class="graf-cena" aria-hidden="true">
+        <div class="graf-mundo" id="grafMundo">
+          <span class="graf-chao"></span>
+          <div class="col col-cinza" style="--v:31"><i class="cn"></i><i class="cl"></i><i class="ct"></i><i class="cf"><b data-conta="31" data-sufixo="%">31%</b></i></div>
+          <div class="col col-verm" style="--v:69"><i class="cn"></i><i class="cl"></i><i class="ct"></i><i class="cf"><b data-conta="69" data-sufixo="%">69%</b></i></div>
+        </div>
+      </div>
+      <div class="graf-legenda">
+        <div><i></i><span><b>31%</b> já seguiam o perfil</span></div>
+        <div class="on"><i></i><span><b>69%</b> ainda não seguiam</span></div>
+      </div>
     </div>
     <div>
       <p class="frase-grande"><em>69% das interações</em> vieram de pessoas que ainda não seguiam o perfil.</p>
       <p class="apoio">É o que separa um perfil que cresce de um perfil que só conversa com quem já está lá. Os canais da WeCare mostram isso na prática.</p>
     </div>
   </div>
-  <div class="leque" id="leque">
-    <button type="button" aria-label="Ver insights da conta"><img src="/images/resultado-insights.jpg" alt="Insights: 11,5 milhões de visualizações e 2,1 milhões de interações" loading="lazy"></button>
-    <button type="button" aria-label="Ver seguidores"><img src="/images/resultado-seguidores.jpg" alt="1,4 milhão de seguidores e atividade do perfil" loading="lazy"></button>
-    <button type="button" aria-label="Ver o perfil"><img src="/images/resultado-perfil-grid.jpg" alt="Perfil da Agência WeCare no Instagram" loading="lazy"></button>
+  <div class="orbita" id="orbita">
+    <div class="orb-fundo" id="orbFundo" aria-hidden="true"></div>
+    <span class="orb-luz" aria-hidden="true"></span>
+    <span class="orb-anel" aria-hidden="true"></span>
+    <div class="orb-cena" id="orbCena">
+      <button type="button" class="orb-cel" aria-label="Ver insights da conta"><img src="/images/resultado-insights.jpg" alt="Insights: 11,5 milhões de visualizações e 2,1 milhões de interações" loading="lazy"></button>
+      <button type="button" class="orb-cel" aria-label="Ver seguidores"><img src="/images/resultado-seguidores.jpg" alt="1,4 milhão de seguidores e atividade do perfil" loading="lazy"></button>
+      <button type="button" class="orb-cel" aria-label="Ver o perfil"><img src="/images/resultado-perfil-grid.jpg" alt="Perfil da Agência WeCare no Instagram" loading="lazy"></button>
+    </div>
+    <span class="orb-chip c1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.3-2.5 4.4-2.5 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z"/></svg></span>
+    <span class="orb-chip c2" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 6.9 2 11.6c0 2.4 1.2 4.6 3.1 6.1L4.4 21l3.8-1.9c1.2.4 2.5.6 3.8.6 5.5 0 10-3.9 10-8.1S17.5 3 12 3z"/></svg></span>
+    <span class="orb-chip c3" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5v15c0 .8.9 1.3 1.6.8l11.3-7.5c.6-.4.6-1.2 0-1.6L8.6 3.7C7.9 3.2 7 3.7 7 4.5z"/></svg></span>
+    <span class="orb-chip c4" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.7 2.3 1.9 10.2c-.8.3-.8 1.5.1 1.7l7.1 2 2 7.1c.2.9 1.4.9 1.7.1L22.7 1.3c.1-.4-.3-.7-.6-.6l-.4 1.6zM10 13.3l8.3-8.3-6.6 10.4-1.7-2.1z"/></svg></span>
   </div>
-  <p class="leque-dica">Toque num celular para trazer para frente</p>
+  <p class="leque-dica">Arraste para girar. Toque para ampliar.</p>
+  <div class="zoom" id="zoom" hidden><img src="" alt=""><button type="button" aria-label="Fechar">&times;</button></div>
 </section>
 
 <section class="bloco faixa-numeros">
@@ -439,9 +534,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
       <p class="apoio">Desses anos de estudo e prática nasceu o método da WeCare: entender o perfil, montar a estratégia certa, executar com cuidado e acompanhar cada resultado. Nada de fórmula pronta, porque a rede de hoje não é a do ano passado.</p>
       <p class="apoio">Hoje ele lidera a equipe que atende clientes no Brasil, nos Estados Unidos, no Canadá e na Europa, com a mesma regra desde o começo: liderança presente, compromisso com o resultado e proximidade em cada etapa.</p>
       <ul class="marcos">
-        <li><b>10 anos</b><span>de redes sociais</span></li>
-        <li><b>4 mercados</b><span>atendidos</span></li>
-        <li><b>Método</b><span>próprio</span></li>
+        <li><b>10 anos</b><span>de experiência</span></li>
+        <li><b>Clientes</b><span>em vários países</span></li>
+        <li><b>Estratégia</b><span>feita para o seu perfil</span></li>
       </ul>
       <p class="assina">Camboriú, Santa Catarina</p>
     </div>
@@ -449,20 +544,37 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 </section>
 
 
-<section class="bloco area">
+<section class="bloco area gal-sec">
   <p class="rotulo">Por trás da WeCare</p>
   <h2 class="titulo">Quem aparece também está no dia a dia.</h2>
-  <div class="cubo-palco" id="cuboPalco" aria-label="Fotos de Leudair Vinter de Farias">
-    <div class="cubo-sombra"></div>
-    <div class="cubo" id="cubo">
-      <img src="/images/b/cubo-terno-preto.jpg" alt="Leudair de terno no escritório da WeCare" loading="lazy">
-      <img src="/images/b/cubo-sala.jpg" alt="Leudair na sala da equipe" loading="lazy">
-      <img src="/images/b/cubo-carro.jpg" alt="Leudair sorrindo na janela do carro" loading="lazy">
-      <img src="/images/b/cubo-perfil.jpg" alt="Leudair segurando um perfil antigo em chamas" loading="lazy">
-      <span class="cubo-tampa"></span>
+  <div class="galeria" id="galeria" aria-label="Fotos de Leudair Vinter de Farias">
+    <div class="gal-trilho">
+      <article class="gal-item" data-p="0">
+        <figure class="gal-foto"><img src="/images/b/cubo-terno-preto.jpg" alt="Leudair de terno no escritório da WeCare" loading="lazy">
+          <div class="vidro-barra"><button type="button" class="vidro" data-ir="-1" aria-label="Foto anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><span class="gal-conta"><b>1</b> / 4</span><button type="button" class="vidro" data-ir="1" aria-label="Próxima foto"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
+        </figure>
+        <div class="gal-txt"><small>No escritório</small><h3>Cada perfil é levado a sério.</h3><p>Do primeiro contato ao resultado, cada cliente recebe atenção de verdade.</p></div>
+      </article>
+      <article class="gal-item" data-p="1">
+        <figure class="gal-foto"><img src="/images/b/cubo-sala.jpg" alt="Leudair na sala da equipe" loading="lazy">
+          <div class="vidro-barra"><button type="button" class="vidro" data-ir="-1" aria-label="Foto anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><span class="gal-conta"><b>2</b> / 4</span><button type="button" class="vidro" data-ir="1" aria-label="Próxima foto"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
+        </figure>
+        <div class="gal-txt"><small>Com a equipe</small><h3>Perto da equipe, todos os dias.</h3><p>Leudair acompanha de perto o trabalho da equipe, no dia a dia.</p></div>
+      </article>
+      <article class="gal-item" data-p="2">
+        <figure class="gal-foto"><img src="/images/b/cubo-carro.jpg" alt="Leudair sorrindo na janela do carro" loading="lazy">
+          <div class="vidro-barra"><button type="button" class="vidro" data-ir="-1" aria-label="Foto anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><span class="gal-conta"><b>3</b> / 4</span><button type="button" class="vidro" data-ir="1" aria-label="Próxima foto"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
+        </figure>
+        <div class="gal-txt"><small>No dia a dia</small><h3>Fácil de falar com a gente.</h3><p>O atendimento é pelo WhatsApp. Você fala com a equipe de onde estiver.</p></div>
+      </article>
+      <article class="gal-item" data-p="-1">
+        <figure class="gal-foto"><img src="/images/b/cubo-perfil.jpg" alt="Leudair segurando um perfil antigo em chamas" loading="lazy">
+          <div class="vidro-barra"><button type="button" class="vidro" data-ir="-1" aria-label="Foto anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><span class="gal-conta"><b>4</b> / 4</span><button type="button" class="vidro" data-ir="1" aria-label="Próxima foto"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
+        </figure>
+        <div class="gal-txt"><small>Uma nova fase</small><h3>Deixe o perfil parado para trás.</h3><p>Perfil parado não cresce. A WeCare ajuda você a começar uma fase nova nas redes.</p></div>
+      </article>
     </div>
   </div>
-  <p class="cubo-dica">Arraste para girar o cubo</p>
 </section>
 
 <section class="bloco final">
@@ -589,64 +701,157 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   arrasto(deck,'x',function(){},function(d){if(Math.abs(d)>40)avanca(d<0?1:-1);});
   arruma();
 
-  /* rosca 3D dos 69%: camadas empilhadas dao a espessura */
-  var rosca=document.getElementById('rosca');
-  for(var i=0;i<14;i++){var c=document.createElement('div');c.className='rosca-camada'+(i<13?' rosca-lado':'');c.style.transform='translateZ('+(i*1.6)+'px)';rosca.appendChild(c);}
-  var rz=-20, roscaViva=true; visivel(rosca,function(x){roscaViva=x;});
-  (function roda(){ if(roscaViva&&!calmo){rz+=.15;rosca.style.setProperty('--rz',rz+'deg');} requestAnimationFrame(roda); })();
-
-
-  /* cubo de fotos: gira de face em face, o dedo arrasta */
-  var cubo=document.getElementById('cubo'), cuboPalco=document.getElementById('cuboPalco');
-  var cy=0, cAlvo=0, cMao=false, cuboVivo=true; visivel(cuboPalco,function(x){cuboVivo=x;});
-  arrasto(cuboPalco,'x',function(dx){cMao=true;cAlvo+=dx*.5;cy=cAlvo;},function(){cAlvo=Math.round(cAlvo/90)*90;cMao=false;});
-  setInterval(function(){if(!cMao&&cuboVivo&&!calmo&&!document.hidden)cAlvo-=90;},2800);
-  (function giraCubo(){cy+=(cAlvo-cy)*.07;cubo.style.setProperty('--cy',cy.toFixed(2)+'deg');requestAnimationFrame(giraCubo);})();
-
-  /* globo: pontos numa esfera, os quatro mercados marcados e ligados a Camboriu */
+  /* grafico de colunas 3D: sobe quando aparece e balanca de leve */
   (function(){
-    var cv=document.getElementById('globo'), palcoG=document.getElementById('globoPalco'), cx=cv.getContext('2d');
-    var dpr=Math.min(2,window.devicePixelRatio||1), W=0;
-    function tam(){W=palcoG.clientWidth;cv.width=W*dpr;cv.height=W*dpr;}
-    tam(); window.addEventListener('resize',tam);
-    var N=900, pts=[]; for(var i=0;i<N;i++){var y=1-(i+.5)/N*2, r=Math.sqrt(1-y*y), th=i*2.39996;pts.push([Math.cos(th)*r,y,Math.sin(th)*r]);}
+    var g=document.getElementById('grafico'), m=document.getElementById('grafMundo'), viva=false, t0=performance.now();
+    visivel(g,function(v){viva=v; if(v)g.classList.add('vivo');});
+    if(calmo)g.classList.add('vivo');
+    (function anda(t){ if(viva&&!calmo)m.style.setProperty('--gy',(-24+Math.sin((t-t0)/2400)*9).toFixed(2)+'deg'); requestAnimationFrame(anda); })(t0);
+  })();
+
+  /* galeria: cartao 3D com foto e texto, botoes de vidro, o dedo arrasta */
+  (function(){
+    var gal=document.getElementById('galeria'), itens=[].slice.call(gal.querySelectorAll('.gal-item')), n=itens.length, at=0, mexeu=false, viva=false;
+    function poe(){
+      itens.forEach(function(it,i){
+        var d=(i-at+n)%n; if(d===n-1)d=-1;
+        it.setAttribute('data-p',d);
+        var ativo=d===0; it.setAttribute('aria-hidden',ativo?'false':'true');
+        it.querySelectorAll('button').forEach(function(b){b.tabIndex=ativo?0:-1;});
+      });
+    }
+    function vai(k){at=(at+k+n)%n;poe();}
+    gal.addEventListener('click',function(e){var b=e.target.closest('[data-ir]');if(!b)return;mexeu=true;vai(+b.dataset.ir);});
+    arrasto(gal,'x',function(){},function(d){if(Math.abs(d)>45){mexeu=true;vai(d<0?1:-1);}});
+    visivel(gal,function(v){viva=v;});
+    setInterval(function(){if(!mexeu&&viva&&!calmo&&!document.hidden)vai(1);},5200);
+    poe();
+  })();
+
+  /* globo: a Terra de verdade (WebGL, foto da NASA) com conexoes saindo de Camboriu */
+  (function(){
+    var palcoG=document.getElementById('globoPalco'), cv=document.getElementById('globo'), cv2=document.getElementById('globoArcos');
+    var ctx=cv2.getContext('2d'), dpr=Math.min(2,window.devicePixelRatio||1), W=0, iniciou=false;
+    var ROT0=0.86, rot=ROT0, alvoRot=ROT0, inc=0.24, RZ=0.7, mao=false, vivo=false;
     function p3(lat,lon){lat*=Math.PI/180;lon*=Math.PI/180;return [Math.cos(lat)*Math.sin(lon),Math.sin(lat),Math.cos(lat)*Math.cos(lon)];}
     var base=p3(-26.99,-48.63);
-    var alvos=[{n:cv.dataset.br||'Brasil',p:base,b:1},{n:cv.dataset.us||'EUA',p:p3(39,-98)},{n:cv.dataset.ca||'Canadá',p:p3(56,-106)},{n:cv.dataset.eu||'Europa',p:p3(50,10)}];
-    var rot=0.75, alvoRot=0.75, mao=false, vivo=true, inc=0.38;
-    visivel(palcoG,function(v){vivo=v;});
-    arrasto(palcoG,'x',function(dx){mao=true;alvoRot+=dx*0.012;rot=alvoRot;},function(){setTimeout(function(){mao=false;},1500);});
-    function gira(v){var c=Math.cos(rot),s=Math.sin(rot);var x=v[0]*c+v[2]*s,z=-v[0]*s+v[2]*c,y=v[1];var ci=Math.cos(inc),si=Math.sin(inc);return [x,y*ci-z*si,y*si+z*ci];}
-    function tela(v,R){return [W/2+v[0]*R, W/2-v[1]*R];}
-    function arco(a,b,R,t){
-      var steps=40,first=true;cx.beginPath();
-      for(var k=0;k<=steps*t;k++){var f=k/steps;var v=[a[0]*(1-f)+b[0]*f,a[1]*(1-f)+b[1]*f,a[2]*(1-f)+b[2]*f];var m=Math.hypot(v[0],v[1],v[2]);var h=1+Math.sin(Math.PI*f)*.22;v=[v[0]/m*h,v[1]/m*h,v[2]/m*h];var g=gira(v);var q=tela(g,R);if(g[2]<0){first=true;continue;}if(first){cx.moveTo(q[0],q[1]);first=false;}else cx.lineTo(q[0],q[1]);}
-      cx.stroke();
+    var rotulos=[{n:cv.dataset.br||'Brasil',p:base,b:1},{n:cv.dataset.us||'EUA',p:p3(38,-97)},{n:cv.dataset.ca||'Canadá',p:p3(57,-105)},{n:cv.dataset.eu||'Europa',p:p3(49,12)}];
+    var cidades=[[40.71,-74],[25.76,-80.19],[28.54,-81.38],[42.36,-71.06],[34.05,-118.24],[41.88,-87.63],[43.65,-79.38],[49.28,-123.12],[45.5,-73.57],[51.05,-114.07],
+                 [38.72,-9.14],[41.15,-8.61],[51.51,-.13],[40.42,-3.7],[48.86,2.35],[45.46,9.19],[53.35,-6.26],[52.52,13.4],[47.38,8.54],[52.37,4.9]];
+    function arco(a,b){var pts=[],ang=Math.acos(Math.max(-1,Math.min(1,a[0]*b[0]+a[1]*b[1]+a[2]*b[2]))),alt=.05+ang*.16;
+      for(var k=0;k<=48;k++){var f=k/48,v=[a[0]*(1-f)+b[0]*f,a[1]*(1-f)+b[1]*f,a[2]*(1-f)+b[2]*f],m=Math.hypot(v[0],v[1],v[2]),h=1+Math.sin(Math.PI*f)*alt;pts.push([v[0]/m*h,v[1]/m*h,v[2]/m*h]);}
+      return pts;}
+    var arcos=cidades.map(function(c,i){var p=p3(c[0],c[1]);return {p:p,pts:arco(base,p),fase:(i*0.37)%1,vel:.16+((i*7)%5)*.025};});
+    function gira(v){var c=Math.cos(rot),s=Math.sin(rot),x=v[0]*c+v[2]*s,z=-v[0]*s+v[2]*c,y=v[1],ci=Math.cos(inc),si=Math.sin(inc);return [x,y*ci-z*si,y*si+z*ci];}
+    function oculto(g){return g[2]<0&&g[0]*g[0]+g[1]*g[1]<1;}
+    function tam(){W=palcoG.clientWidth;[cv,cv2].forEach(function(c){c.width=Math.round(W*dpr);c.height=Math.round(W*dpr);}); if(gl)gl.viewport(0,0,cv.width,cv.height);}
+
+    /* WebGL: cada pixel da esfera busca a cor no mapa da Terra, com sol, noite e atmosfera */
+    var gl=null, prog=null, uRot, uInc, uR, uPx, texOk=0;
+    function montaGL(){
+      try{gl=cv.getContext('webgl',{premultipliedAlpha:true,antialias:true,alpha:true});}catch(e){gl=null;}
+      if(!gl)return false;
+      var der=gl.getExtension('OES_standard_derivatives');
+      var vs='attribute vec2 a;varying vec2 v;void main(){v=a;gl_Position=vec4(a,0.,1.);}';
+      var fs=(der?'#extension GL_OES_standard_derivatives : enable\n':'')+'precision highp float;varying vec2 v;uniform sampler2D dia,noite;uniform float rot,inc,R,px;'+
+      'void main(){vec2 p=vec2(v.x,v.y)/R;float d=dot(p,p),r=sqrt(d);'+
+      'vec3 L=normalize(vec3(-.55,.38,.74));'+
+      'float lado=.35+.65*clamp(.5+.5*dot(normalize(p+1e-5),normalize(L.xy)),0.,1.);'+
+      'float atm=exp(-max(r-1.,0.)*16.)*.75*lado*step(1.,r)+0.;'+
+      'vec4 fora=vec4(vec3(.36,.6,1.)*atm,atm);'+
+      'float z=sqrt(max(1.-d,0.));vec3 n=vec3(p.x,p.y,z);'+
+      'float ci=cos(inc),si=sin(inc),c=cos(rot),s=sin(rot);'+
+      'float y=ci*n.y+si*n.z,zp=-si*n.y+ci*n.z,x=n.x*c-zp*s,zz=n.x*s+zp*c;'+
+      'float lat=asin(clamp(y,-1.,1.)),lon=atan(x,zz);'+
+      'float u1=lon/6.2831853+.5;'+
+      (der?'float u2=fract(u1+.5)-.5;float u=fwidth(u1)<=fwidth(u2)+1e-6?u1:u2;':'float u=u1;')+
+      'vec2 uv=vec2(u,.5-lat/3.1415927);'+
+      'vec3 cd=texture2D(dia,uv).rgb,cn=texture2D(noite,uv).rgb;'+
+      'float dl=dot(n,L),luz=smoothstep(-.18,.55,dl);'+
+      'vec3 col=cd*(.06+1.08*luz);'+
+      'col+=cn*vec3(1.,.82,.55)*(1.-smoothstep(-.3,.12,dl))*1.5;'+
+      'float mar=smoothstep(.02,.14,cd.b-max(cd.r,cd.g)*.92);vec3 h=normalize(L+vec3(0.,0.,1.));'+
+      'col+=pow(max(dot(n,h),0.),38.)*.55*mar*luz*vec3(1.,.96,.9);'+
+      'float f=pow(1.-z,2.6);col=mix(col,vec3(.42,.66,1.)*(.25+.9*luz),f*.6);'+
+      'float borda=1.-smoothstep(1.-px*1.6,1.,r);'+
+      'gl_FragColor=mix(fora,vec4(col,1.),borda);}';
+      function sh(t,src){var o=gl.createShader(t);gl.shaderSource(o,src);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(o);return o;}
+      try{prog=gl.createProgram();gl.attachShader(prog,sh(gl.VERTEX_SHADER,vs));gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(prog);
+        if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw 'link';}catch(e){gl=null;return false;}
+      gl.useProgram(prog);
+      var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+      var a=gl.getAttribLocation(prog,'a');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
+      uRot=gl.getUniformLocation(prog,'rot');uInc=gl.getUniformLocation(prog,'inc');uR=gl.getUniformLocation(prog,'R');uPx=gl.getUniformLocation(prog,'px');
+      gl.uniform1i(gl.getUniformLocation(prog,'dia'),0);gl.uniform1i(gl.getUniformLocation(prog,'noite'),1);
+      [['/images/b/terra.jpg',0],['/images/b/terra-noite.jpg',1]].forEach(function(t){
+        var tex=gl.createTexture();gl.activeTexture(gl.TEXTURE0+t[1]);gl.bindTexture(gl.TEXTURE_2D,tex);
+        gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,1,1,0,gl.RGBA,gl.UNSIGNED_BYTE,new Uint8Array([10,30,60,255]));
+        var im=new Image();im.onload=function(){gl.activeTexture(gl.TEXTURE0+t[1]);gl.bindTexture(gl.TEXTURE_2D,tex);
+          gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,im);
+          gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+          if(der){gl.generateMipmap(gl.TEXTURE_2D);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);}else gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
+          gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);texOk++;};
+        im.src=t[0];
+      });
+      gl.clearColor(0,0,0,0);
+      return true;
     }
-    var t0=performance.now(), ja=false;
-    function desenha(t){
-      requestAnimationFrame(desenha);
-      if(!vivo&&ja)return; ja=true;
-      if(!mao&&!calmo)alvoRot+=0.0025;
-      rot+=(alvoRot-rot)*.1;
-      cx.setTransform(dpr,0,0,dpr,0,0);cx.clearRect(0,0,W,W);
-      var R=W*0.4;
-      var gr=cx.createRadialGradient(W/2-R*.35,W/2-R*.4,R*.1,W/2,W/2,R*1.05);gr.addColorStop(0,'#FFFFFF');gr.addColorStop(1,'#D9DDE4');
-      cx.fillStyle=gr;cx.beginPath();cx.arc(W/2,W/2,R,0,Math.PI*2);cx.fill();
-      cx.fillStyle='rgba(18,19,24,.07)';cx.beginPath();cx.ellipse(W/2,W/2+R*1.12,R*.8,R*.09,0,0,Math.PI*2);cx.fill();
-      for(var i=0;i<N;i++){var g=gira(pts[i]);if(g[2]<0)continue;var q=tela(g,R);cx.fillStyle='rgba(59,63,74,'+(0.15+g[2]*0.45)+')';cx.beginPath();cx.arc(q[0],q[1],1.05+g[2]*.9,0,Math.PI*2);cx.fill();}
-      var fase=calmo?1:Math.min(1,((t-t0)%6000)/2200);
-      cx.lineWidth=2;cx.strokeStyle='rgba(212,17,46,.75)';cx.lineCap='round';
-      for(var j=1;j<alvos.length;j++){arco(base,alvos[j].p,R,fase);}
-      cx.font='600 '+Math.max(11,W*0.03)+'px Sora, system-ui, sans-serif';
-      alvos.forEach(function(a){var g=gira(a.p);if(g[2]<-0.05)return;var q=tela(g,R);
-        cx.fillStyle='rgba(212,17,46,.18)';cx.beginPath();cx.arc(q[0],q[1],a.b?13:10,0,Math.PI*2);cx.fill();
-        cx.fillStyle=a.b?'#A20D24':'#D4112E';cx.beginPath();cx.arc(q[0],q[1],a.b?6:5,0,Math.PI*2);cx.fill();
-        var tw=cx.measureText(a.n).width+16;var lx=Math.min(W-tw-4,Math.max(4,q[0]-tw/2)),ly=q[1]-34;
-        cx.fillStyle='rgba(255,255,255,.95)';cx.beginPath();cx.roundRect?cx.roundRect(lx,ly,tw,22,8):cx.rect(lx,ly,tw,22);cx.fill();
-        cx.fillStyle='#121318';cx.fillText(a.n,lx+8,ly+15);});
+    /* sem WebGL: a foto da Terra num circulo, com sombra, parada */
+    var plano=null;
+    function montaPlano(){var c=cv.getContext('2d');plano=new Image();plano.onload=function(){desenhaPlano(c);};plano.src='/images/b/terra.jpg';window.addEventListener('resize',function(){desenhaPlano(c);});}
+    function desenhaPlano(c){var w=cv.width,R=w*RZ/2;c.clearRect(0,0,w,w);c.save();c.beginPath();c.arc(w/2,w/2,R,0,7);c.clip();
+      var lonC=-ROT0*180/Math.PI,fx=(lonC+180)/360*plano.width,iw=plano.width/2;c.drawImage(plano,fx-iw/2,0,iw,plano.height,w/2-R,w/2-R,2*R,2*R);
+      var g=c.createRadialGradient(w/2-R*.4,w/2-R*.4,R*.1,w/2,w/2,R);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,20,.65)');c.fillStyle=g;c.fillRect(0,0,w,w);c.restore();}
+
+    function inicia(){
+      if(iniciou)return;iniciou=true;
+      var temGL=montaGL(); tam(); window.addEventListener('resize',tam);
+      if(!temGL)montaPlano();
+      arrasto(palcoG,'x',function(dx){mao=true;alvoRot-=dx*0.009;},function(){setTimeout(function(){mao=false;},1400);});
+      var ult=performance.now(), t0=ult;
+      function quadro(t){
+        requestAnimationFrame(quadro);
+        var dt=Math.min(.05,(t-ult)/1000);ult=t;
+        if(!vivo)return;
+        if(!mao&&!calmo){var zb=gira(base)[2];alvoRot-=dt*(zb>0?.075:.22);}
+        rot+=(alvoRot-rot)*.12;
+        if(gl){gl.clear(gl.COLOR_BUFFER_BIT);gl.uniform1f(uRot,rot);gl.uniform1f(uInc,inc);gl.uniform1f(uR,RZ);gl.uniform1f(uPx,2/(cv.width*RZ));gl.drawArrays(gl.TRIANGLE_STRIP,0,4);}
+        if(!gl)return;
+        desenhaArcos((t-t0)/1000);
+      }
+      requestAnimationFrame(quadro);
     }
-    requestAnimationFrame(desenha);
+    function tela(g,R){return [W/2+g[0]*R,W/2-g[1]*R];}
+    function desenhaArcos(seg){
+      var R=W*RZ/2; ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,W); ctx.lineCap='round';
+      arcos.forEach(function(a){
+        var pr=a.pts.map(function(v){var g=gira(v);return {q:tela(g,R),h:oculto(g)};});
+        ctx.beginPath();var ab=false;
+        pr.forEach(function(o){if(o.h){ab=false;return;}if(!ab){ctx.moveTo(o.q[0],o.q[1]);ab=true;}else ctx.lineTo(o.q[0],o.q[1]);});
+        ctx.strokeStyle='rgba(255,92,112,.2)';ctx.lineWidth=1;ctx.stroke();
+        var t=calmo?1:((seg*a.vel+a.fase)%1.25), cab=Math.min(t,1)*48, cauda=Math.max(0,cab-14);
+        if(t<=1.05){
+          for(var k=Math.floor(cauda);k<Math.floor(cab);k++){var o1=pr[k],o2=pr[k+1];if(!o2||o1.h||o2.h)continue;var f=(k-cauda)/14;
+            ctx.strokeStyle='rgba(255,'+Math.round(80+150*f)+','+Math.round(100+140*f)+','+(.15+.85*f)+')';ctx.lineWidth=1.2+1.6*f;ctx.beginPath();ctx.moveTo(o1.q[0],o1.q[1]);ctx.lineTo(o2.q[0],o2.q[1]);ctx.stroke();}
+          var oc=pr[Math.min(48,Math.floor(cab))];if(oc&&!oc.h&&t<1){ctx.fillStyle='rgba(255,255,255,.95)';ctx.beginPath();ctx.arc(oc.q[0],oc.q[1],2.2,0,7);ctx.fill();}
+        }
+        var gd=gira(a.p);if(!oculto(gd)&&gd[2]>0){var q=tela(gd,R),br=t>1&&t<1.25?1-(t-1)/.25:0;
+          ctx.fillStyle='rgba(255,59,85,'+(.2+.45*br)+')';ctx.beginPath();ctx.arc(q[0],q[1],2.5+4*br,0,7);ctx.fill();
+          ctx.fillStyle='#FF8A9A';ctx.beginPath();ctx.arc(q[0],q[1],1.8,0,7);ctx.fill();}
+      });
+      var gb=gira(base);if(gb[2]>0){var qb=tela(gb,R),pul=(seg%2)/2;
+        ctx.strokeStyle='rgba(255,59,85,'+(1-pul)*.8+')';ctx.lineWidth=2;ctx.beginPath();ctx.arc(qb[0],qb[1],5+pul*18,0,7);ctx.stroke();
+        ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(qb[0],qb[1],4.5,0,7);ctx.fill();ctx.fillStyle='#D4112E';ctx.beginPath();ctx.arc(qb[0],qb[1],3,0,7);ctx.fill();}
+      var fs=Math.max(11,Math.min(14,W*.032));ctx.font='600 '+fs+'px Sora, system-ui, sans-serif';
+      rotulos.forEach(function(r){var g=gira(r.p);if(g[2]<.12)return;var q=tela(g,R),tw=ctx.measureText(r.n).width+18,hh=fs+11;
+        var lx=Math.min(W-tw-8,Math.max(8,q[0]-tw/2)),ly=q[1]-hh-(r.b?14:10);
+        ctx.globalAlpha=Math.min(1,(g[2]-.12)*5);
+        ctx.fillStyle=r.b?'#D4112E':'rgba(255,255,255,.94)';ctx.beginPath();if(ctx.roundRect)ctx.roundRect(lx,ly,tw,hh,hh/2);else ctx.rect(lx,ly,tw,hh);ctx.fill();
+        ctx.fillStyle=r.b?'#fff':'#121318';ctx.fillText(r.n,lx+9,ly+hh/2+fs*.36);ctx.globalAlpha=1;});
+    }
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){es.forEach(function(e){vivo=e.isIntersecting;if(vivo)inicia();});},{rootMargin:'200px 0px'}).observe(palcoG);
+    } else {vivo=true;inicia();}
   })();
 
   /* conta o clique no WhatsApp no pixel (so vale se a pessoa aceitou os cookies) */
@@ -655,18 +860,50 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     window.fbq('track','Contact',{content_name:document.documentElement.dataset.pagina||'b'});
   });
 
-  /* celulares em leque */
-  var leque=document.getElementById('leque'), cel=[].slice.call(leque.children), frente=1;
-  function abre(){
-    cel.forEach(function(b,i){
-      var d=i-frente;
-      b.style.zIndex=10-Math.abs(d);
-      b.style.transform='translateX(calc(-50% + '+(d*42)+'%)) translateZ('+(-Math.abs(d)*140)+'px) rotateY('+(-d*28)+'deg)';
-      b.style.filter='brightness('+(d?.78:1)+')';
-    });
-  }
-  cel.forEach(function(b,i){b.addEventListener('click',function(){frente=i;abre();});});
-  abre();
+  /* celulares girando em orbita, com posts da WeCare flutuando ao fundo */
+  (function(){
+    var orb=document.getElementById('orbita'), cena=document.getElementById('orbCena'), fundo=document.getElementById('orbFundo');
+    var cels=[].slice.call(cena.children), n=cels.length, passo=Math.PI*2/n;
+    var ang=0, alvo=0, mao=false, arrastou=false, viva=false, ultTroca=performance.now();
+    var posts=[]; for(var j=0;j<12;j++){var e=document.createElement('span');e.className='orb-post';e.style.setProperty('--px',(j%6)*20+'%');
+      e.style.setProperty('--t',(j%3===0?74:60)+'px');fundo.appendChild(e);posts.push({el:e,a:j/12*Math.PI*2,y:((j*37)%100)/100,s:(j%2?1:-1)});}
+    visivel(orb,function(v){viva=v;});
+    function poe(){
+      var w=orb.clientWidth, h=orb.clientHeight, rx=Math.min(w*.34,330), rz=Math.min(w*.42,260);
+      cels.forEach(function(c,i){
+        var t=ang+i*passo, x=Math.sin(t)*rx, z=Math.cos(t)*rz, fr=(Math.cos(t)+1)/2;
+        c.style.transform='translate3d('+x.toFixed(1)+'px,'+((1-fr)*-18).toFixed(1)+'px,'+(z-rz).toFixed(1)+'px) rotateY('+(Math.sin(t)*-22).toFixed(1)+'deg)';
+        c.style.zIndex=Math.round(fr*10)+2; c.style.filter='brightness('+(.42+.58*fr).toFixed(2)+')';
+        c.tabIndex=fr>.9?0:-1;
+      });
+      posts.forEach(function(p){
+        var t=p.a-ang*.45, x=Math.sin(t)*w*.62, z=Math.cos(t)*220-420, y=(p.y-.5)*h*.9+(p.y<.5?-40:40);
+        var fr=(Math.cos(t)+1)/2;
+        p.el.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,'+z.toFixed(1)+'px) rotateY('+(Math.sin(t)*-30).toFixed(1)+'deg) rotateZ('+(p.s*6)+'deg)';
+        p.el.style.opacity=(.25+.6*fr).toFixed(2);
+      });
+    }
+    function frente(){var k=Math.round(-alvo/passo);return ((k%n)+n)%n;}
+    arrasto(orb,'x',function(dx){if(Math.abs(dx)>0)arrastou=true;mao=true;alvo+=dx*.006;ang=alvo;},function(d){
+      alvo=Math.round(alvo/passo)*passo;mao=false;ultTroca=performance.now();setTimeout(function(){arrastou=false;},50);});
+    cels.forEach(function(c,i){c.addEventListener('click',function(){
+      if(arrastou)return;
+      if(i===frente()){var z=document.getElementById('zoom'),im=z.querySelector('img'),o=c.querySelector('img');im.src=o.currentSrc||o.src;im.alt=o.alt;z.hidden=false;z.querySelector('button').focus();}
+      else{var dif=((i-frente())%n+n)%n;alvo-=(dif===1?1:-1)*passo;ultTroca=performance.now();}
+    });});
+    var zoom=document.getElementById('zoom');
+    function fecha(){zoom.hidden=true;}
+    zoom.addEventListener('click',fecha);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!zoom.hidden)fecha();});
+    (function quadro(t){
+      requestAnimationFrame(quadro);
+      if(!viva)return;
+      if(!mao&&!calmo&&!document.hidden&&t-ultTroca>3000){alvo-=passo;ultTroca=t;}
+      if(!mao)ang+=(alvo-ang)*.045;
+      poe();
+    })(performance.now());
+    poe();
+  })();
 })();
 </script>
 <script src="/js/video.js"></script>
