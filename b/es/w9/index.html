@@ -189,7 +189,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* quem conduz */
 .ceo-foto{position:relative;perspective:1000px}
 .ceo-foto .quadro{--incl:-10deg}
-.ceo-foto .quadro img{aspect-ratio:870/1001;object-position:50% 30%}
+.ceo-foto .quadro img{aspect-ratio:4/5;object-position:50% 20%}
 .cargo{margin-top:8px;font-family:var(--titulo);font-weight:600;color:var(--vermelho)}
 .assina{display:flex;align-items:center;gap:12px;margin-top:24px;font-size:.88rem;color:var(--tinta-3)}
 .assina::before{content:"";width:34px;height:2px;border-radius:2px;background:var(--vermelho)}
@@ -229,6 +229,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .video-card small{font-size:.8rem;opacity:.85}
 @media (min-width:880px){.video-card{max-width:760px;margin-inline:auto}}
 
+.marcos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:26px 0 0;padding:0;list-style:none}
+.marcos li{display:flex;flex-direction:column;gap:2px;padding:12px 12px 14px;border-radius:14px;background:var(--fundo);border:1px solid var(--linha);box-shadow:0 4px 0 var(--linha)}
+.marcos b{font-family:var(--titulo);font-size:.92rem;white-space:nowrap;color:var(--tinta);letter-spacing:-.02em;line-height:1.15}
+.marcos span{font-size:.78rem;color:var(--tinta-3);line-height:1.3}
 /* chamada final */
 .final{position:relative;overflow:hidden;background:radial-gradient(90% 70% at 85% 0%,#3A0A14 0%,var(--grafite) 60%);color:#C9CBD3;text-align:left}
 .final h2{color:#fff;font-size:clamp(2rem,5.6vw,3.4rem);font-weight:800}
@@ -425,14 +429,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 <section class="bloco faixa-numeros">
   <div class="area duas">
     <div class="ceo-foto">
-      <figure class="quadro"><img src="/images/b/leudair-escritorio.jpg" alt="Leudair Vinter de Farias en la oficina de la Agencia WeCare" loading="lazy"></figure>
+      <figure class="quadro"><img src="/images/b/leudair-sofa.jpg" alt="Leudair Vinter de Farias en la oficina de la Agencia WeCare" loading="lazy"></figure>
     </div>
     <div>
       <p class="rotulo">Quién lidera</p>
       <h2 class="titulo">Leudair Vinter de Farias</h2>
-      <p class="cargo">CEO de la Agencia WeCare</p>
-      <p class="apoio">En diez años de mercado, acompañó las transformaciones de las redes sociales, desarrolló estrategias, lideró la operación y convirtió la práctica en proceso.</p>
-      <p class="apoio">Él marca el tono de la atención: liderazgo presente, compromiso con el resultado y cercanía en cada etapa.</p>
+      <p class="cargo">Fundador y CEO de la Agencia WeCare</p>
+      <p class="apoio">Desde hace diez años, Leudair trabaja todos los días con redes sociales. Vio a Instagram cambiar de cara muchas veces, siguió la llegada de los Reels, de TikTok y de cada nuevo algoritmo, y observó de cerca cómo los grandes influencers construyeron sus audiencias.</p>
+      <p class="apoio">De esos años de estudio y práctica nació el método WeCare: entender el perfil, armar la estrategia correcta, ejecutar con cuidado y acompañar cada resultado. Nada de fórmulas listas, porque las redes de hoy no son las del año pasado.</p>
+      <p class="apoio">Hoy lidera el equipo que atiende clientes en Brasil, Estados Unidos, Canadá y Europa, con la misma regla desde el principio: liderazgo presente, compromiso con el resultado y cercanía en cada etapa.</p>
+      <ul class="marcos">
+        <li><b>10 años</b><span>en redes sociales</span></li>
+        <li><b>4 mercados</b><span>atendidos</span></li>
+        <li><b>Método</b><span>propio</span></li>
+      </ul>
       <p class="assina">Camboriú, Santa Catarina, Brasil</p>
     </div>
   </div>

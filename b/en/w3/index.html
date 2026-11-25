@@ -189,7 +189,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* quem conduz */
 .ceo-foto{position:relative;perspective:1000px}
 .ceo-foto .quadro{--incl:-10deg}
-.ceo-foto .quadro img{aspect-ratio:870/1001;object-position:50% 30%}
+.ceo-foto .quadro img{aspect-ratio:4/5;object-position:50% 20%}
 .cargo{margin-top:8px;font-family:var(--titulo);font-weight:600;color:var(--vermelho)}
 .assina{display:flex;align-items:center;gap:12px;margin-top:24px;font-size:.88rem;color:var(--tinta-3)}
 .assina::before{content:"";width:34px;height:2px;border-radius:2px;background:var(--vermelho)}
@@ -229,6 +229,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .video-card small{font-size:.8rem;opacity:.85}
 @media (min-width:880px){.video-card{max-width:760px;margin-inline:auto}}
 
+.marcos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:26px 0 0;padding:0;list-style:none}
+.marcos li{display:flex;flex-direction:column;gap:2px;padding:12px 12px 14px;border-radius:14px;background:var(--fundo);border:1px solid var(--linha);box-shadow:0 4px 0 var(--linha)}
+.marcos b{font-family:var(--titulo);font-size:.92rem;white-space:nowrap;color:var(--tinta);letter-spacing:-.02em;line-height:1.15}
+.marcos span{font-size:.78rem;color:var(--tinta-3);line-height:1.3}
 /* chamada final */
 .final{position:relative;overflow:hidden;background:radial-gradient(90% 70% at 85% 0%,#3A0A14 0%,var(--grafite) 60%);color:#C9CBD3;text-align:left}
 .final h2{color:#fff;font-size:clamp(2rem,5.6vw,3.4rem);font-weight:800}
@@ -425,14 +429,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 <section class="bloco faixa-numeros">
   <div class="area duas">
     <div class="ceo-foto">
-      <figure class="quadro"><img src="/images/b/leudair-escritorio.jpg" alt="Leudair Vinter de Farias at the WeCare Agency office" loading="lazy"></figure>
+      <figure class="quadro"><img src="/images/b/leudair-sofa.jpg" alt="Leudair Vinter de Farias at the WeCare Agency office" loading="lazy"></figure>
     </div>
     <div>
       <p class="rotulo">Who leads</p>
       <h2 class="titulo">Leudair Vinter de Farias</h2>
-      <p class="cargo">CEO of WeCare Agency</p>
-      <p class="apoio">In ten years in the market, he has followed every shift in social media, built strategies, led the operation and turned practice into process.</p>
-      <p class="apoio">He sets the tone of how clients are treated: hands-on leadership, commitment to results and closeness at every step.</p>
+      <p class="cargo">Founder and CEO of WeCare Agency</p>
+      <p class="apoio">For ten years, Leudair has worked with social media every single day. He has watched Instagram reinvent itself again and again, followed the arrival of Reels, TikTok and every new algorithm, and studied up close how the biggest influencers built their audiences.</p>
+      <p class="apoio">Those years of study and practice became the WeCare method: understand the profile, build the right strategy, execute with care and follow every result. No ready-made formulas, because today's social media is not last year's.</p>
+      <p class="apoio">Today he leads the team that serves clients in Brazil, the United States, Canada and Europe, with the same rule since day one: hands-on leadership, commitment to results and closeness at every step.</p>
+      <ul class="marcos">
+        <li><b>10 years</b><span>in social media</span></li>
+        <li><b>4 markets</b><span>served</span></li>
+        <li><b>Own</b><span>method</span></li>
+      </ul>
       <p class="assina">Camboriú, Santa Catarina, Brazil</p>
     </div>
   </div>
