@@ -2,6 +2,18 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
     {
+      "src": "^/((?:en|es)(?:/w[0-9]+)?|w[0-9]+)$",
+      "has": [{ "type": "host", "value": "agenciawecare.com.br" }],
+      "status": 308,
+      "headers": { "Location": "/$1/" }
+    },
+    {
+      "src": "^/((?:en|es)(?:/w[0-9]+)?|w[0-9]+)$",
+      "has": [{ "type": "host", "value": "www.agenciawecare.com.br" }],
+      "status": 308,
+      "headers": { "Location": "/$1/" }
+    },
+    {
       "src": "^/(?!images/|css/|js/|videos/|b/)(.*)$",
       "has": [{ "type": "host", "value": "agenciawecare.com.br" }],
       "dest": "/b/$1"

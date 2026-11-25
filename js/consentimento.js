@@ -40,14 +40,21 @@
     var caixa = document.createElement('div');
     caixa.className = 'aviso-cookies';
     caixa.setAttribute('role', 'dialog');
-    caixa.setAttribute('aria-label', 'Aviso de cookies');
+    /* Texto no idioma da pagina (lang do <html>); portugues e o padrao. */
+    var idioma = (document.documentElement.lang || 'pt').slice(0, 2);
+    var T = {
+      pt: ['Aviso de cookies', 'Usamos cookies para medir o desempenho dos nossos anúncios. Você escolhe se aceita. Detalhes na nossa ', 'política de cookies', 'Recusar', 'Aceitar'],
+      en: ['Cookie notice', 'We use cookies to measure how our ads perform. It is your choice. Details in our ', 'cookie policy', 'Decline', 'Accept'],
+      es: ['Aviso de cookies', 'Usamos cookies para medir el rendimiento de nuestros anuncios. Tú eliges si aceptas. Detalles en nuestra ', 'política de cookies', 'Rechazar', 'Aceptar']
+    }[idioma] || null;
+    if (!T) T = ['Aviso de cookies', 'Usamos cookies para medir o desempenho dos nossos anúncios. Você escolhe se aceita. Detalhes na nossa ', 'política de cookies', 'Recusar', 'Aceitar'];
+    caixa.setAttribute('aria-label', T[0]);
     caixa.innerHTML =
-      '<p>Usamos cookies para medir o desempenho dos nossos anúncios. ' +
-      'Você escolhe se aceita. Detalhes na nossa ' +
-      '<a href="/cookies.html">política de cookies</a>.</p>' +
+      '<p>' + T[1] +
+      '<a href="/cookies.html">' + T[2] + '</a>.</p>' +
       '<div class="aviso-cookies-botoes">' +
-      '<button type="button" data-cookies="nao">Recusar</button>' +
-      '<button type="button" data-cookies="sim" class="aviso-cookies-sim">Aceitar</button>' +
+      '<button type="button" data-cookies="nao">' + T[3] + '</button>' +
+      '<button type="button" data-cookies="sim" class="aviso-cookies-sim">' + T[4] + '</button>' +
       '</div>';
     caixa.addEventListener('click', function (e) {
       var b = e.target.closest('button[data-cookies]');

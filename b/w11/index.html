@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-pagina="b-pt-w11">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -63,6 +63,11 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(238,240,243,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(214,218,225,.7)}
 .topo .area{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
 .topo img{height:36px;width:auto}
+.topo-dir{display:flex;align-items:center;gap:10px}
+.idiomas{display:flex;padding:3px;border-radius:11px;background:var(--fundo-2);box-shadow:inset 0 1px 2px rgba(18,19,24,.12)}
+.idiomas a{font-family:var(--titulo);font-size:.74rem;font-weight:600;letter-spacing:.04em;text-decoration:none;color:var(--tinta-3);padding:6px 8px;border-radius:8px}
+.idiomas a[aria-current]{background:var(--branco);color:var(--tinta);box-shadow:0 2px 0 var(--linha),0 4px 10px -6px rgba(18,19,24,.4)}
+@media (max-width:399px){.so-largo{display:none}.btn-pequeno{padding:10px 12px}}
 
 /* abertura com o palco 3D */
 .abertura{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;align-items:center;padding-block:clamp(28px,5vw,72px) clamp(40px,6vw,80px)}
@@ -203,6 +208,27 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .cubo-dica{text-align:center;font-size:.8rem;color:var(--tinta-3)}
 @media (min-width:880px){.cubo{--l:300px}.cubo-palco{height:420px}.cubo-sombra{margin-top:190px}}
 
+/* globo dos paises */
+.globo-linha{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:center;margin-top:30px}
+.globo-palco{position:relative;width:min(100%,440px);aspect-ratio:1;margin:0 auto;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.globo-palco canvas{width:100%;height:100%;display:block}
+.paises{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
+.paises li{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:16px;background:var(--branco);border:1px solid var(--linha);box-shadow:0 5px 0 var(--linha),0 14px 22px -16px rgba(18,19,24,.4)}
+.paises b{font-family:var(--titulo);font-size:1.02rem;color:var(--tinta);letter-spacing:-.01em}
+.paises span{font-size:.82rem;color:var(--tinta-3)}
+.paises .base{background:var(--vermelho);border-color:var(--vermelho);box-shadow:0 5px 0 var(--vermelho-2),0 14px 22px -14px rgba(212,17,46,.6)}
+.paises .base b,.paises .base span{color:#fff}
+@media (min-width:880px){.globo-linha{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+/* video da metodologia */
+.video-card{position:relative;display:block;margin-top:44px;border-radius:22px;overflow:hidden;transform:perspective(1000px) rotateX(6deg);transform-origin:50% 100%;box-shadow:0 34px 50px -26px rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.1)}
+.video-card img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:brightness(.62)}
+.video-card .tocar-video{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer;background:none;border:0;padding:0;color:#fff;font:inherit}
+.video-card .tocar-video span{display:flex;align-items:center;justify-content:center;width:74px;height:74px;border-radius:50%;background:var(--vermelho);box-shadow:0 6px 0 var(--vermelho-2),0 16px 30px rgba(0,0,0,.5)}
+.video-card .tocar-video span::before{content:"";display:block;width:0;height:0;margin-left:6px;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:22px solid #fff}
+.video-card em{font-style:normal;font-family:var(--titulo);font-weight:600;font-size:1rem;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.video-card small{font-size:.8rem;opacity:.85}
+@media (min-width:880px){.video-card{max-width:760px;margin-inline:auto}}
+
 /* chamada final */
 .final{position:relative;overflow:hidden;background:radial-gradient(90% 70% at 85% 0%,#3A0A14 0%,var(--grafite) 60%);color:#C9CBD3;text-align:left}
 .final h2{color:#fff;font-size:clamp(2rem,5.6vw,3.4rem);font-weight:800}
@@ -249,7 +275,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 <header class="topo">
   <div class="area">
     <a href="#inicio" aria-label="Agência WeCare, início"><img src="/images/logo-wecare.png?v=3" alt="Agência WeCare" width="83" height="36"></a>
-    <a class="btn btn-pequeno" href="https://wa.me/5547992414060?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W11%29%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener"><svg class="zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2 .9c.3.1.4.2.5.3.1.2.1.6-.1 1.1Z"/></svg> WhatsApp</a>
+    <div class="topo-dir">
+      <nav class="idiomas" aria-label="Idioma"><a href="./" aria-current="true" lang="pt">PT</a><a href="../en/w11/" lang="en">EN</a><a href="../es/w11/" lang="es">ES</a></nav>
+      <a class="btn btn-pequeno" href="https://wa.me/5547992414060?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W11%29%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2 .9c.3.1.4.2.5.3.1.2.1.6-.1 1.1Z"/></svg><span class="so-largo">WhatsApp</span></a>
+    </div>
   </div>
 </header>
 
@@ -288,8 +317,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     <h2 class="titulo">O método, aplicado primeiro em casa.</h2>
     <div class="blocos">
       <div class="bloco3d"><strong data-conta="10">10</strong><span>anos de experiência</span></div>
-      <div class="bloco3d destaque"><strong data-conta="11.5" data-sufixo=" mi" data-casas="1">11,5 mi</strong><span>visualizações</span></div>
-      <div class="bloco3d"><strong data-conta="2.1" data-sufixo=" mi" data-casas="1">2,1 mi</strong><span>interações</span></div>
+      <div class="bloco3d destaque"><strong data-conta="11.5" data-sufixo=" mi" data-sep="," data-casas="1">11,5 mi</strong><span>visualizações</span></div>
+      <div class="bloco3d"><strong data-conta="2.1" data-sufixo=" mi" data-sep="," data-casas="1">2,1 mi</strong><span>interações</span></div>
       <div class="bloco3d"><strong data-conta="228" data-sufixo=" mil">228 mil</strong><span>contas alcançadas</span></div>
     </div>
     <ul class="extras">
@@ -300,6 +329,21 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
       <li><b>2.900</b> toques em links externos</li>
     </ul>
     <p class="nota">Números dos canais da própria Agência WeCare, o mesmo trabalho que aplicamos em cada cliente.</p>
+  </div>
+</section>
+
+<section class="bloco area" id="onde">
+  <p class="rotulo">Onde atendemos</p>
+  <h2 class="titulo">Do Brasil para o mundo.</h2>
+  <p class="apoio">A WeCare atende clientes no Brasil, nos Estados Unidos, no Canadá e em toda a Europa. Todo o atendimento é pelo WhatsApp, de onde você estiver.</p>
+  <div class="globo-linha">
+    <div class="globo-palco" id="globoPalco"><canvas id="globo" data-br="Brasil" data-us="Estados Unidos" data-ca="Canadá" data-eu="Europa" aria-label="Globo com Brasil, Estados Unidos, Canadá e Europa marcados" role="img"></canvas></div>
+    <ul class="paises">
+      <li class="base"><b>Brasil</b><span>Sede em Camboriú, SC</span></li>
+      <li><b>Estados Unidos</b><span>Atendimento online</span></li>
+      <li><b>Canadá</b><span>Atendimento online</span></li>
+      <li><b>Europa</b><span>Atendimento online</span></li>
+    </ul>
   </div>
 </section>
 
@@ -330,8 +374,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   </div>
 
   <div class="vitrine">
-    <figure class="quadro"><img src="/images/estrutura-fisica.jpg" alt="Fachada da Agência WeCare" loading="lazy"><figcaption>A casa da WeCare</figcaption></figure>
-    <figure class="quadro"><img src="/images/equipe.jpg" alt="Equipe da Agência WeCare trabalhando" loading="lazy"><figcaption>A equipe que acompanha cada perfil</figcaption></figure>
+    <figure class="quadro"><img src="/images/b/estrutura.jpg" alt="Fachada da Agência WeCare" loading="lazy"><figcaption>A casa da WeCare</figcaption></figure>
+    <figure class="quadro"><img src="/images/b/equipe.jpg" alt="Equipe da Agência WeCare trabalhando" loading="lazy"><figcaption>A equipe que acompanha cada perfil</figcaption></figure>
   </div>
 </section>
 
@@ -349,6 +393,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     <div class="deck-nav">
       <div class="pontos" id="pontos" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
       <button type="button" id="proxima">Próxima etapa</button>
+    </div>
+    <div class="video-card" data-video-metodologia style="display:none">
+      <img src="/images/metodologia-analise.jpg" alt="" loading="lazy">
+      <button type="button" class="tocar-video" aria-label="Assistir o vídeo da Metodologia WeCare"><span></span><em>Assista ao vídeo da Metodologia WeCare</em><small>Cerca de um minuto</small></button>
     </div>
   </div>
 </section>
@@ -492,7 +540,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
       if(!v||feito)return; feito=true; var ini=performance.now();
       (function passo(t){
         var p=Math.min(1,(t-ini)/1400), e=1-Math.pow(1-p,3);
-        el.textContent=(fim*e).toFixed(casas).replace('.',',')+suf;
+        el.textContent=(fim*e).toFixed(casas).replace('.',el.dataset.sep||',')+suf;
         if(p<1)requestAnimationFrame(passo);
       })(ini);
     });
@@ -545,6 +593,58 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   setInterval(function(){if(!cMao&&cuboVivo&&!calmo&&!document.hidden)cAlvo-=90;},2800);
   (function giraCubo(){cy+=(cAlvo-cy)*.07;cubo.style.setProperty('--cy',cy.toFixed(2)+'deg');requestAnimationFrame(giraCubo);})();
 
+  /* globo: pontos numa esfera, os quatro mercados marcados e ligados a Camboriu */
+  (function(){
+    var cv=document.getElementById('globo'), palcoG=document.getElementById('globoPalco'), cx=cv.getContext('2d');
+    var dpr=Math.min(2,window.devicePixelRatio||1), W=0;
+    function tam(){W=palcoG.clientWidth;cv.width=W*dpr;cv.height=W*dpr;}
+    tam(); window.addEventListener('resize',tam);
+    var N=900, pts=[]; for(var i=0;i<N;i++){var y=1-(i+.5)/N*2, r=Math.sqrt(1-y*y), th=i*2.39996;pts.push([Math.cos(th)*r,y,Math.sin(th)*r]);}
+    function p3(lat,lon){lat*=Math.PI/180;lon*=Math.PI/180;return [Math.cos(lat)*Math.sin(lon),Math.sin(lat),Math.cos(lat)*Math.cos(lon)];}
+    var base=p3(-26.99,-48.63);
+    var alvos=[{n:cv.dataset.br||'Brasil',p:base,b:1},{n:cv.dataset.us||'EUA',p:p3(39,-98)},{n:cv.dataset.ca||'Canadá',p:p3(56,-106)},{n:cv.dataset.eu||'Europa',p:p3(50,10)}];
+    var rot=0.75, alvoRot=0.75, mao=false, vivo=true, inc=0.38;
+    visivel(palcoG,function(v){vivo=v;});
+    arrasto(palcoG,'x',function(dx){mao=true;alvoRot+=dx*0.012;rot=alvoRot;},function(){setTimeout(function(){mao=false;},1500);});
+    function gira(v){var c=Math.cos(rot),s=Math.sin(rot);var x=v[0]*c+v[2]*s,z=-v[0]*s+v[2]*c,y=v[1];var ci=Math.cos(inc),si=Math.sin(inc);return [x,y*ci-z*si,y*si+z*ci];}
+    function tela(v,R){return [W/2+v[0]*R, W/2-v[1]*R];}
+    function arco(a,b,R,t){
+      var steps=40,first=true;cx.beginPath();
+      for(var k=0;k<=steps*t;k++){var f=k/steps;var v=[a[0]*(1-f)+b[0]*f,a[1]*(1-f)+b[1]*f,a[2]*(1-f)+b[2]*f];var m=Math.hypot(v[0],v[1],v[2]);var h=1+Math.sin(Math.PI*f)*.22;v=[v[0]/m*h,v[1]/m*h,v[2]/m*h];var g=gira(v);var q=tela(g,R);if(g[2]<0){first=true;continue;}if(first){cx.moveTo(q[0],q[1]);first=false;}else cx.lineTo(q[0],q[1]);}
+      cx.stroke();
+    }
+    var t0=performance.now(), ja=false;
+    function desenha(t){
+      requestAnimationFrame(desenha);
+      if(!vivo&&ja)return; ja=true;
+      if(!mao&&!calmo)alvoRot+=0.0025;
+      rot+=(alvoRot-rot)*.1;
+      cx.setTransform(dpr,0,0,dpr,0,0);cx.clearRect(0,0,W,W);
+      var R=W*0.4;
+      var gr=cx.createRadialGradient(W/2-R*.35,W/2-R*.4,R*.1,W/2,W/2,R*1.05);gr.addColorStop(0,'#FFFFFF');gr.addColorStop(1,'#D9DDE4');
+      cx.fillStyle=gr;cx.beginPath();cx.arc(W/2,W/2,R,0,Math.PI*2);cx.fill();
+      cx.fillStyle='rgba(18,19,24,.07)';cx.beginPath();cx.ellipse(W/2,W/2+R*1.12,R*.8,R*.09,0,0,Math.PI*2);cx.fill();
+      for(var i=0;i<N;i++){var g=gira(pts[i]);if(g[2]<0)continue;var q=tela(g,R);cx.fillStyle='rgba(59,63,74,'+(0.15+g[2]*0.45)+')';cx.beginPath();cx.arc(q[0],q[1],1.05+g[2]*.9,0,Math.PI*2);cx.fill();}
+      var fase=calmo?1:Math.min(1,((t-t0)%6000)/2200);
+      cx.lineWidth=2;cx.strokeStyle='rgba(212,17,46,.75)';cx.lineCap='round';
+      for(var j=1;j<alvos.length;j++){arco(base,alvos[j].p,R,fase);}
+      cx.font='600 '+Math.max(11,W*0.03)+'px Sora, system-ui, sans-serif';
+      alvos.forEach(function(a){var g=gira(a.p);if(g[2]<-0.05)return;var q=tela(g,R);
+        cx.fillStyle='rgba(212,17,46,.18)';cx.beginPath();cx.arc(q[0],q[1],a.b?13:10,0,Math.PI*2);cx.fill();
+        cx.fillStyle=a.b?'#A20D24':'#D4112E';cx.beginPath();cx.arc(q[0],q[1],a.b?6:5,0,Math.PI*2);cx.fill();
+        var tw=cx.measureText(a.n).width+16;var lx=Math.min(W-tw-4,Math.max(4,q[0]-tw/2)),ly=q[1]-34;
+        cx.fillStyle='rgba(255,255,255,.95)';cx.beginPath();cx.roundRect?cx.roundRect(lx,ly,tw,22,8):cx.rect(lx,ly,tw,22);cx.fill();
+        cx.fillStyle='#121318';cx.fillText(a.n,lx+8,ly+15);});
+    }
+    requestAnimationFrame(desenha);
+  })();
+
+  /* conta o clique no WhatsApp no pixel (so vale se a pessoa aceitou os cookies) */
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href*="wa.me/"]'); if(!a||!window.fbq)return;
+    window.fbq('track','Contact',{content_name:document.documentElement.dataset.pagina||'b'});
+  });
+
   /* celulares em leque */
   var leque=document.getElementById('leque'), cel=[].slice.call(leque.children), frente=1;
   function abre(){
@@ -559,5 +659,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   abre();
 })();
 </script>
+<script src="/js/video.js"></script>
 </body>
 </html>
