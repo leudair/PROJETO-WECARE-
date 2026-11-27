@@ -310,7 +310,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .marcos b{font-family:var(--titulo);font-size:.98rem;color:var(--tinta);letter-spacing:-.02em;line-height:1.15}
 .marcos span{font-size:.8rem;color:var(--tinta-2);line-height:1.3}
 
-/* servicos: galeria 3D num pavilhao de vidro (three.js, js/expo.js) */
+/* servicos: escritorio 3D da WeCare (three.js, js/expo.js) */
 .agencia{max-width:760px}
 .expo{--in:max(20px,env(safe-area-inset-left,0px));position:relative;height:100svh;min-height:600px;max-height:960px;background:#e4ecef;overflow:hidden;touch-action:pan-y;color:#141b20}
 .expo-galeria{position:absolute;inset:0}
@@ -409,6 +409,33 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .expo-janela .object-copy{padding:22px 20px 26px;overflow:visible}
   .expo-janela .close{position:fixed;top:12px;right:12px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.2)}
 }
+
+/* escritorio: tema escuro por cima da galeria */
+.expo{background:#0c0d0f;color:#f5f5f6}
+.expo-intro h2,.expo-legenda h3{color:#fff}
+.expo-galeria::before,.expo-galeria::after{content:"";position:absolute;left:0;right:0;z-index:1;pointer-events:none}
+.expo-galeria::before{top:0;height:46%;background:linear-gradient(180deg,rgba(8,9,11,.9),rgba(8,9,11,.5) 55%,rgba(8,9,11,0));transition:opacity .6s}
+.expo:not(.na-entrada) .expo-galeria::before{opacity:.35}
+.expo-galeria::after{bottom:0;height:58%;background:linear-gradient(0deg,rgba(8,9,11,.96),rgba(8,9,11,.7) 42%,rgba(8,9,11,0))}
+.expo.na-entrada .expo-galeria::after{height:22%}
+.expo-intro p:not(.rotulo){color:rgba(255,255,255,.8)}
+.expo-legenda .micro{color:rgba(255,255,255,.62)}
+.expo-sub,.expo-fim-txt{color:rgba(255,255,255,.8)}
+.expo .detail-button{color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.24);box-shadow:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.expo .detail-button:hover{background:rgba(255,255,255,.2)}
+.expo .rotate-hint{display:none}
+.expo .exhibit-label{transition:opacity .5s ease,transform .5s cubic-bezier(.2,.7,.25,1)}
+.expo .exhibit-label:not(.is-arrived){opacity:0;transform:translateY(16px);pointer-events:none}
+.expo-status:not(:empty){background:rgba(22,24,28,.88);color:#fff}
+.expo-status{color:rgba(255,255,255,.8)}
+.expo-doca{border-top-color:rgba(255,255,255,.14)}
+.expo-rota button{color:rgba(255,255,255,.62)}
+.expo-rota button[aria-current=step]{color:#ff3b55}
+.expo-dica{color:rgba(255,255,255,.55)}
+.expo-passos button{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.24);color:#fff}
+.expo .step-count{color:rgba(255,255,255,.72)}
+.expo-palco{background:#15171b}
+.expo-palco .stage-controls{color:rgba(255,255,255,.6)}
 /* chamada final */
 .final{position:relative;overflow:hidden;background:radial-gradient(90% 70% at 85% 0%,#3A0A14 0%,var(--grafite) 60%);color:#C9CBD3;text-align:left}
 .final h2{color:#fff;font-size:clamp(2rem,5.6vw,3.4rem);font-weight:800}
@@ -553,7 +580,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
       <p class="rotulo">Serviços</p>
       <h2>Tudo o que a sua marca precisa para crescer.</h2>
       <p>Cinco serviços, uma equipe só. Entre e conheça cada um.</p>
-      <button class="btn expo-entrar" type="button" data-action="enter">Ver os serviços <span aria-hidden="true">↗</span></button>
+      <button class="btn expo-entrar" type="button" data-action="enter">Entrar na agência <span aria-hidden="true">→</span></button>
     </div>
     <div class="expo-legenda" aria-live="polite" hidden></div>
     <p class="expo-status" role="status"></p>
@@ -790,7 +817,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     var sec=document.getElementById('servicos'); if(!sec)return; var foi=false;
     function vai(){ if(foi)return; foi=true;
       if(window.WeCareExpo){window.WeCareExpo.start(sec);return;}
-      var sc=document.createElement('script'); sc.src='/js/expo.js?v=1'; sc.async=true;
+      var sc=document.createElement('script'); sc.src='/js/expo.js?v=2'; sc.async=true;
       sc.onload=function(){window.WeCareExpo&&window.WeCareExpo.start(sec);}; document.head.appendChild(sc); }
     if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es.some(function(e){return e.isIntersecting;})){io.disconnect();vai();}},{rootMargin:'900px 0px'});io.observe(sec);}
     else vai();

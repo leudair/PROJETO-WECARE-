@@ -69,7 +69,6 @@ export async function start(root) {
         <p class="expo-sub">${esc(item.material)}</p>
         <div class="caption-actions">
           <button class="detail-button" type="button" data-action="inspect"><span>${esc(t.saiba)}</span><span class="action-icon" aria-hidden="true">↗</span></button>
-          <span class="rotate-hint">${esc(t.girar)}</span>
         </div>`;
     caption.classList.remove('is-arrived');
     all('[data-station]').forEach((button, i) => button.setAttribute('aria-current', state.route === i + 1 ? 'step' : 'false'));
@@ -183,15 +182,14 @@ export async function start(root) {
   const revealText = mountTextMotion(root);
   await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
   try {
-    const { makeGallery } = await import('./gallery.js');
+    const { makeGallery } = await import('./escritorio.js');
     gallery = makeGallery(q('.expo-mundo'), {
-      open(i) { if (i === state.selected) openObject(i, q('[data-action="inspect"]', caption)); else goTo(i); },
+      open(i) { if (!state.intro && state.route === i + 1) openObject(i, q('[data-action="inspect"]', caption)); else goTo(i); },
       didRotate() { touchStart = undefined; },
       arrival(arrived) {
-        if (state.route === horizon + 1 && caption.classList.contains('is-arrived') !== arrived) {
-          caption.classList.toggle('is-arrived', arrived);
-          revealText();
-        }
+        if (caption.classList.contains('is-arrived') === arrived) return;
+        caption.classList.toggle('is-arrived', arrived);
+        if (arrived && state.route === horizon + 1) revealText();
       },
       preview() {}, fallback,
       assetError(item, error) { console.warn(`${item.name}:`, error.message); },
