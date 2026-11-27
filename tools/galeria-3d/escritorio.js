@@ -282,6 +282,15 @@ function drawScreen(kind, variant, L, posts) {
   return c;
 }
 
+// Na previa os arquivos vem embutidos (data:). Le direto, sem fetch, que pode ser bloqueado.
+function loadGlb(gl, src) {
+  if (!src.startsWith('data:')) return gl.loadAsync(src);
+  const bin = atob(src.slice(src.indexOf(',') + 1));
+  const buf = new Uint8Array(bin.length);
+  for (let k = 0; k < bin.length; k++) buf[k] = bin.charCodeAt(k);
+  return gl.parseAsync(buf.buffer, '');
+}
+
 /* ---------------- terno escuro: tinge so o que tem cor (terno, colete, gravata) ---------------- */
 
 function suitTexture(map, renderer) {
@@ -972,8 +981,8 @@ export function makeGallery(host, hooks) {
   const ready = (async () => {
     const gl = new GLTFLoader();
     const [gltf, anim, posts, logoTex] = await Promise.all([
-      gl.loadAsync(file('avatar.glb')),
-      gl.loadAsync(file('anda.glb')),
+      loadGlb(gl, file('avatar.glb')).catch((e) => { console.warn('avatar', e); return null; }),
+      loadGlb(gl, file('anda.glb')).catch((e) => { console.warn('anda', e); return null; }),
       img(file('posts.jpg')),
       loader.loadAsync(file('logo-3d.webp')).catch(() => null),
       fontReady,
@@ -1017,7 +1026,8 @@ export function makeGallery(host, hooks) {
         room.pivot.add(holder);
       } catch (error) { hooks.assetError?.(room.item, error); }
     }));
-    // personagem
+    // personagem (se nao carregar, o escritorio aparece mesmo assim)
+    if (!gltf || !anim) { heroReady = true; renderer.render(scene, camera); invalidate(); return; }
     const model = gltf.scene;
     model.traverse((o) => {
       if (!o.isMesh) return;
