@@ -1,0 +1,2 @@
+Codigo-fonte da galeria 3D dos servicos (versao B).
+Gera js/expo.js com: npx esbuild expo-entry.js --bundle --format=iife --minify --alias:three=<three.js r187>/three.module.js

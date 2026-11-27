@@ -309,6 +309,106 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .marcos li{display:flex;flex-direction:column;gap:2px;padding:12px 12px 14px;border-radius:14px;background:var(--fundo);border:1px solid var(--linha);box-shadow:0 4px 0 var(--linha)}
 .marcos b{font-family:var(--titulo);font-size:.98rem;color:var(--tinta);letter-spacing:-.02em;line-height:1.15}
 .marcos span{font-size:.8rem;color:var(--tinta-2);line-height:1.3}
+
+/* servicos: galeria 3D num pavilhao de vidro (three.js, js/expo.js) */
+.agencia{max-width:760px}
+.expo{--in:max(20px,env(safe-area-inset-left,0px));position:relative;height:100svh;min-height:600px;max-height:960px;background:#e4ecef;overflow:hidden;touch-action:pan-y;color:#141b20}
+.expo-galeria{position:absolute;inset:0}
+.expo-mundo,.expo-mundo canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.expo-intro{position:absolute;left:var(--in);right:var(--in);top:clamp(92px,15%,160px);max-width:600px;z-index:2;pointer-events:none}
+.expo-intro h2{font-size:clamp(2rem,5.4vw,3.7rem);font-weight:800;letter-spacing:-.035em;line-height:1.02}
+.expo-intro p:not(.rotulo){margin-top:14px;color:var(--tinta-2);font-size:1.02rem;max-width:25em}
+.expo-entrar{pointer-events:auto;margin-top:22px}
+.expo-entrar:disabled{opacity:.55;cursor:default}
+.expo-legenda{position:absolute;left:var(--in);bottom:96px;z-index:2;max-width:min(540px,62%)}
+.expo-legenda .micro{font-family:var(--titulo);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-3)}
+.expo-legenda .micro b{display:table;margin:7px 0 0;padding:3px 8px;border-radius:999px;background:var(--vermelho);color:#fff;letter-spacing:.08em}
+.expo-legenda h3{font-size:clamp(1.75rem,4.4vw,3.2rem);font-weight:800;letter-spacing:-.035em;margin:8px 0 6px}
+.expo-sub,.expo-fim-txt{color:var(--tinta-2);font-size:.98rem;margin-bottom:14px;max-width:26em}
+.expo .caption-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
+.expo .detail-button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;cursor:pointer;
+  font:600 .92rem var(--titulo);color:var(--tinta);background:rgba(255,255,255,.8);border:1px solid rgba(18,19,24,.18);box-shadow:0 4px 0 rgba(18,19,24,.12)}
+.expo .detail-button:hover{background:#fff}
+.expo .rotate-hint{font-size:.72rem;color:var(--tinta-3)}
+.expo-zap{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:0 20px;border-radius:14px;text-decoration:none;color:#fff;
+  font:600 .95rem var(--titulo);background:linear-gradient(180deg,#34C76B,var(--verde));box-shadow:0 5px 0 #157A3A,0 12px 22px -10px rgba(18,19,24,.5)}
+.expo-zap:active{transform:translateY(4px);box-shadow:0 1px 0 #157A3A}
+.expo-zap svg{width:19px;height:19px;fill:currentColor}
+.expo .horizon-label:not(.is-arrived){visibility:hidden}
+.expo-status{position:absolute;right:var(--in);top:92px;z-index:2;font-size:.8rem;color:var(--tinta-2)}
+.expo-status:not(:empty){padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.9)}
+.expo-doca{position:absolute;left:var(--in);right:var(--in);bottom:0;z-index:3;padding:10px 0 max(12px,env(safe-area-inset-bottom,0px));display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(39,60,75,.2)}
+.expo-rota{display:flex;gap:clamp(4px,1.3vw,20px)}
+.expo-rota button{min-height:40px;min-width:32px;padding:0 2px;background:none;border:0;cursor:pointer;font:600 .7rem var(--titulo);letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-2);white-space:nowrap}
+.expo-rota button[aria-current=step]{color:var(--vermelho);text-decoration:underline;text-underline-offset:6px}
+.expo-rota button:disabled{opacity:.45}
+.expo-dica{font-size:.72rem;color:var(--tinta-3);display:none}
+.expo-passos{display:flex;align-items:center;gap:4px}
+.expo-passos button{width:40px;height:40px;border-radius:50%;cursor:pointer;border:1px solid rgba(18,19,24,.18);background:rgba(255,255,255,.75);font-size:1.05rem;color:var(--tinta)}
+.expo-passos button:disabled{opacity:.35;cursor:default}
+.expo .step-count{min-width:54px;text-align:center;font:600 .74rem var(--titulo);color:var(--tinta-2)}
+.expo button:focus-visible,.expo a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px}
+.expo-lista{display:none}
+.expo.sem-3d{height:auto;max-height:none;min-height:0;background:var(--fundo)}
+.expo.sem-3d .expo-galeria{position:relative;padding:60px var(--in)}
+.expo.sem-3d :is(.expo-mundo,.expo-intro,.expo-legenda,.expo-doca,.expo-status){display:none}
+.expo.sem-3d .expo-lista{display:block;max-width:var(--largura);margin:0 auto}
+.expo-lista ul{list-style:none;padding:0;margin:16px 0 22px;display:grid;gap:10px}
+.expo-lista li{display:flex;flex-direction:column;gap:4px;padding:16px;border-radius:16px;background:#fff;border:1px solid var(--linha)}
+.expo-lista b{font-family:var(--titulo);color:var(--tinta)}
+.expo .sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.expo .motion-word{display:inline-block;white-space:nowrap}
+.expo .motion-char{display:inline-block;transform-origin:center}
+.expo .text-motion:not([data-played])>.motion-visual{visibility:hidden}
+.expo[data-text-motion=stagger] .text-motion[data-played] .motion-char{animation:expo-letra 700ms cubic-bezier(.165,.84,.44,1) var(--char-delay,100ms) both}
+.expo[data-text-motion=fade] .text-motion[data-played]>.motion-visual{animation:expo-some 200ms ease-out both}
+@keyframes expo-letra{from{opacity:0;transform:translateY(.45em)}to{opacity:1;transform:none}}
+@keyframes expo-some{from{opacity:0}to{opacity:1}}
+.flutua{transition:opacity .25s,transform .25s}
+.flutua.some{opacity:0;transform:scale(.6);pointer-events:none}
+/* janela de detalhes */
+.expo-janela{border:0;padding:0;border-radius:22px;width:min(1040px,94vw);max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);background:#fff;color:var(--tinta-2);box-shadow:0 30px 90px rgba(18,19,24,.45)}
+.expo-janela[open]{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);animation:expo-abre .33s cubic-bezier(.2,.67,.25,1) both}
+@keyframes expo-abre{from{opacity:0;transform:translateY(12px) scale(.99)}}
+.expo-janela::backdrop{background:rgba(18,19,24,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.expo-palco{position:relative;min-height:440px;background:#e0e6e8;overflow:hidden}
+.expo-palco .stage-world{position:absolute;inset:0}
+.expo-palco canvas{width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+.expo-palco .stage-controls{position:absolute;left:16px;right:16px;bottom:14px;display:flex;align-items:center;justify-content:space-between;pointer-events:none;font-size:.72rem;color:var(--tinta-3)}
+.expo-palco .stage-controls div{display:flex;gap:6px}
+.expo-palco .stage-controls button{pointer-events:auto;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.92);font-size:1.2rem;cursor:pointer;color:var(--tinta)}
+.expo-janela .object-copy{position:relative;padding:56px clamp(20px,3vw,40px) 34px;overflow:auto}
+.expo-janela .close{position:absolute;top:14px;right:14px;z-index:2;width:42px;height:42px;border-radius:50%;border:0;background:var(--fundo);font-size:1rem;cursor:pointer;color:var(--tinta)}
+.expo-janela .micro{font-family:var(--titulo);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--vermelho)}
+.expo-janela-titulo{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;letter-spacing:-.03em;margin:8px 0 14px}
+.expo-janela .description{font-size:1rem}
+.expo-janela .expo-inclui{margin-top:22px;color:var(--tinta-3)}
+.expo-janela ul{list-style:none;padding:0;margin:10px 0 24px;display:grid;gap:8px}
+.expo-janela li{position:relative;padding-left:26px;color:var(--tinta);font-weight:500}
+.expo-janela li::before{content:"";position:absolute;left:0;top:.3em;width:16px;height:16px;border-radius:50%;background:var(--vermelho);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8'/%3E%3C/svg%3E")}
+.expo-janela li::after{content:"";position:absolute;left:5px;top:calc(.3em + 4px);width:4px;height:7px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+@media (max-width:1000px){.expo .station-name{display:none}}
+@media (max-width:700px){
+  .expo{min-height:620px}
+  .expo-intro{top:86px}
+  .expo-intro p:not(.rotulo){font-size:.95rem}
+  .expo-legenda{bottom:74px;max-width:calc(100% - var(--in) * 2)}
+  .expo-legenda.exhibit-label{max-width:64%}
+  .expo-legenda h3{font-size:clamp(1.55rem,7.4vw,2.1rem)}
+  .expo-sub{font-size:.88rem;margin-bottom:10px}
+  .expo .rotate-hint{display:none}
+  .expo-rota{gap:0}
+  .expo-rota button{min-width:30px}
+  .expo-passos button{width:38px;height:38px}
+  .expo .step-count{min-width:46px;font-size:.68rem}
+  .expo.na-entrada .expo-dica{display:inline}
+  .expo.na-entrada .expo-rota{display:none}
+  .expo-janela[open]{grid-template-columns:1fr;overflow:auto}
+  .expo-palco{min-height:min(36dvh,300px)}
+  .expo-janela .object-copy{padding:22px 20px 26px;overflow:visible}
+  .expo-janela .close{position:fixed;top:12px;right:12px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+}
 /* chamada final */
 .final{position:relative;overflow:hidden;background:radial-gradient(90% 70% at 85% 0%,#3A0A14 0%,var(--grafite) 60%);color:#C9CBD3;text-align:left}
 .final h2{color:#fff;font-size:clamp(2rem,5.6vw,3.4rem);font-weight:800}
@@ -427,7 +527,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 </section>
 
 <section class="bloco area">
-  <div class="duas">
+  <div class="agencia">
     <div>
       <p class="rotulo">A agência</p>
       <h2 class="titulo">As redes mudam toda semana. A gente acompanha.</h2>
@@ -437,25 +537,40 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
         <li>Instagram</li><li>TikTok</li><li>YouTube</li><li>Facebook</li><li>Kwai</li>
       </ul>
     </div>
-    <div class="tambor-caixa" id="tamborCaixa" aria-label="O que a WeCare faz">
-      <div class="tambor-mira"></div>
-      <div class="tambor" id="tambor">
-        <div class="face"><b>01</b>Crescimento de audiência</div>
-        <div class="face"><b>02</b>Alcance e visualizações</div>
-        <div class="face"><b>03</b>Curtidas e interações</div>
-        <div class="face"><b>04</b>Compartilhamentos e reposts</div>
-        <div class="face"><b>05</b>Comentários e prova social</div>
-        <div class="face"><b>06</b>Distribuição de conteúdo</div>
-        <div class="face"><b>07</b>Construção de autoridade</div>
-        <div class="face"><b>08</b>Engajamento recorrente</div>
-      </div>
-    </div>
   </div>
 
   <div class="vitrine">
     <figure class="quadro"><img src="/images/b/estrutura.jpg" alt="Fachada da Agência WeCare" loading="lazy"><figcaption>A casa da WeCare</figcaption></figure>
     <figure class="quadro"><img src="/images/b/equipe.jpg" alt="Equipe da Agência WeCare trabalhando" loading="lazy"><figcaption>A equipe que acompanha cada perfil</figcaption></figure>
   </div>
+</section>
+
+
+<section class="expo" id="servicos" data-wa="https://wa.me/5547996010374?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20WeCare%20%28W2%29%20e%20gostaria%20de%20atendimento." aria-label="Serviços da WeCare">
+  <div class="expo-galeria">
+    <div class="expo-mundo"></div>
+    <div class="expo-intro">
+      <p class="rotulo">Serviços</p>
+      <h2>Tudo o que a sua marca precisa para crescer.</h2>
+      <p>Cinco serviços, uma equipe só. Entre e conheça cada um.</p>
+      <button class="btn expo-entrar" type="button" data-action="enter">Ver os serviços <span aria-hidden="true">↗</span></button>
+    </div>
+    <div class="expo-legenda" aria-live="polite" hidden></div>
+    <p class="expo-status" role="status"></p>
+    <div class="expo-lista"></div>
+    <div class="expo-doca">
+      <nav class="expo-rota" aria-label="Lista de serviços"></nav>
+      <span class="expo-dica">Arraste para o lado</span>
+      <div class="expo-passos"></div>
+    </div>
+  </div>
+  <dialog class="expo-janela" aria-label="Detalhes do serviço">
+    <div class="expo-palco"></div>
+    <div class="object-copy">
+      <button class="close" type="button" data-close aria-label="Fechar">&#10005;</button>
+      <div class="expo-info"></div>
+    </div>
+  </dialog>
 </section>
 
 <section id="metodo" class="bloco metodo">
@@ -668,19 +783,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     });
   });
 
-  /* tambor dos servicos: gira de face em face, o dedo arrasta */
-  var tambor=document.getElementById('tambor'), caixa=document.getElementById('tamborCaixa');
-  var faces=tambor.querySelectorAll('.face'), passoAng=360/faces.length;
-  var raio=Math.round(64/2/Math.tan(Math.PI/faces.length))+6;
-  tambor.style.transform='translateZ(-'+raio+'px) rotateX(var(--giro,0deg))';
-  faces.forEach(function(f,i){f.style.transform='rotateX('+(-i*passoAng)+'deg) translateZ('+raio+'px)';});
-  var giro=0, alvo=0, tocando=false, tamborVivo=true;
-  visivel(caixa,function(v){tamborVivo=v;});
-  arrasto(caixa,'y',function(dy){tocando=true;alvo+=dy*.6;giro=alvo;},function(){alvo=Math.round(alvo/passoAng)*passoAng;tocando=false;});
-  setInterval(function(){if(!tocando&&tamborVivo&&!calmo&&!document.hidden)alvo+=passoAng;},2200);
-  (function gira(){
-    giro+=(alvo-giro)*.09; tambor.style.setProperty('--giro',giro.toFixed(2)+'deg');
-    requestAnimationFrame(gira);
+
+
+  /* galeria 3D dos servicos: o arquivo (three.js) so carrega quando a secao se aproxima */
+  (function(){
+    var sec=document.getElementById('servicos'); if(!sec)return; var foi=false;
+    function vai(){ if(foi)return; foi=true;
+      if(window.WeCareExpo){window.WeCareExpo.start(sec);return;}
+      var sc=document.createElement('script'); sc.src='/js/expo.js?v=1'; sc.async=true;
+      sc.onload=function(){window.WeCareExpo&&window.WeCareExpo.start(sec);}; document.head.appendChild(sc); }
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es.some(function(e){return e.isIntersecting;})){io.disconnect();vai();}},{rootMargin:'900px 0px'});io.observe(sec);}
+    else vai();
+    /* com a galeria na tela, o botao flutuante sai para nao cobrir as setas */
+    var fl=document.querySelector('.flutua');
+    if(fl&&'IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){fl.classList.toggle('some',e.intersectionRatio>.35);});},{threshold:[0,.35,.6,1]}).observe(sec);
   })();
 
   /* baralho das etapas */
